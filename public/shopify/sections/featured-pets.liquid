@@ -1,0 +1,63 @@
+{{ 'auconforto.css' | asset_url | stylesheet_tag }}
+
+<section class="page-width" style="padding:4rem 1.5rem;" {{ section.shopify_attributes }}>
+  <p style="letter-spacing:.18em;text-transform:uppercase;font-size:.7rem;color:#6f645a;">{{ section.settings.kicker }}</p>
+  <h2 style="font-size:clamp(1.8rem,3vw,2.4rem);margin:.4rem 0 .5rem;max-width:20ch;">{{ section.settings.title }}</h2>
+  <p style="color:#6f645a;margin:0 0 2rem;">{{ section.settings.subtitle }}</p>
+
+  {% assign col = collections[section.settings.collection] %}
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;">
+    {% if col != blank %}
+      {% for product in col.products limit: 4 %}
+        <article style="position:relative;">
+          <a href="{{ product.url }}" style="display:block;position:relative;">
+            {% if product.featured_image %}
+              {{ product.featured_image | image_url: width: 800 | image_tag: loading: 'lazy', style: 'width:100%;aspect-ratio:1;object-fit:cover;border-radius:12px;' }}
+            {% endif %}
+            {% if product.tags contains 'mais-vendido' %}
+              <span class="ac-badge">Mais vendido</span>
+            {% elsif product.tags contains 'pra-gatos' %}
+              <span class="ac-badge">Pra gatos</span>
+            {% endif %}
+          </a>
+          <h3 style="margin:1rem 0 .25rem;font-size:1.15rem;">
+            <a href="{{ product.url }}" style="color:inherit;text-decoration:none;">{{ product.title }}</a>
+          </h3>
+          <div style="display:flex;gap:.5rem;align-items:baseline;">
+            <span>{{ product.price | money }}</span>
+            {% if product.compare_at_price > product.price %}
+              <s style="color:#6f645a;">{{ product.compare_at_price | money }}</s>
+            {% endif %}
+          </div>
+        </article>
+      {% endfor %}
+    {% endif %}
+  </div>
+  {% if section.settings.button_label != blank %}
+    <p style="margin-top:2rem;">
+      <a class="ac-btn ac-btn--primary" href="{{ section.settings.button_link | default: col.url }}">{{ section.settings.button_label }}</a>
+    </p>
+  {% endif %}
+</section>
+
+<style>
+  @media (max-width: 749px) {
+    .section-ac-featured [style*="repeat(4"] { grid-template-columns: 1fr 1fr !important; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "AC Featured pets",
+  "class": "section-ac-featured",
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Kicker", "default": "Coleção em destaque" },
+    { "type": "text", "id": "title", "label": "Título", "default": "Os 4 que mais saem pra quem mora em apê" },
+    { "type": "text", "id": "subtitle", "label": "Subtítulo", "default": "Escolhe pela tua dor. Frete grátis acima de R$149." },
+    { "type": "collection", "id": "collection", "label": "Coleção (Pets)" },
+    { "type": "text", "id": "button_label", "label": "Botão", "default": "Ver tudo" },
+    { "type": "url", "id": "button_link", "label": "Link do botão", "default": "/collections/pets" }
+  ],
+  "presets": [{ "name": "AC Featured pets" }]
+}
+{% endschema %}

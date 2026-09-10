@@ -1,0 +1,45 @@
+{{ 'auconforto.css' | asset_url | stylesheet_tag }}
+
+<section class="ac-faq" {{ section.shopify_attributes }}>
+  <h2 style="font-size:2rem;margin-bottom:.5rem;">{{ section.settings.title }}</h2>
+  <p style="color:#6f645a;margin-bottom:1.5rem;">{{ section.settings.subtitle }}</p>
+  {% for block in section.blocks %}
+    <details {{ block.shopify_attributes }} {% if forloop.first %}open{% endif %}>
+      <summary>{{ block.settings.question }}</summary>
+      <p style="color:#6f645a;margin:.75rem 0 0;">{{ block.settings.answer }}</p>
+    </details>
+  {% endfor %}
+</section>
+
+{% schema %}
+{
+  "name": "AC FAQ",
+  "class": "section-ac-faq",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Título", "default": "Perguntas de quem mora em apê" },
+    { "type": "text", "id": "subtitle", "label": "Subtítulo", "default": "As mesmas 5 do suporte. Sem enrolação." }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Pergunta",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Pergunta" },
+        { "type": "textarea", "id": "answer", "label": "Resposta" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "AC FAQ",
+      "blocks": [
+        { "type": "item", "settings": { "question": "Quando chega?", "answer": "8-15 dias úteis com rastreio. Código em até 48h após pagamento." } },
+        { "type": "item", "settings": { "question": "Frete?", "answer": "R$9,90 fixo com rastreio, grátis acima de R$149. Imposto incluso." } },
+        { "type": "item", "settings": { "question": "E se quebrar?", "answer": "7 dias com vídeo = troca ou reembolso. Sem devolução se custo <70." } },
+        { "type": "item", "settings": { "question": "Pix tem desconto?", "answer": "Sim, 5% OFF automático + cupom VOLTA10 na primeira compra." } },
+        { "type": "item", "settings": { "question": "Serve pro meu pet?", "answer": "Pente/Escova: cães/gatos pelo curto/médio. Moinho: gatos. Tapete XS: até 5kg." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

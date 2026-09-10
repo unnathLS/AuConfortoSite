@@ -1,0 +1,41 @@
+{{ 'auconforto.css' | asset_url | stylesheet_tag }}
+
+<div class="ac-trust" {{ section.shopify_attributes }}>
+  {% for block in section.blocks %}
+    <div {{ block.shopify_attributes }}>
+      <h3>{{ block.settings.title }}</h3>
+      <p>{{ block.settings.text }}</p>
+    </div>
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "AC Trust bar",
+  "tag": "section",
+  "class": "section-ac-trust",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Item",
+      "limit": 4,
+      "settings": [
+        { "type": "text", "id": "title", "label": "Título" },
+        { "type": "textarea", "id": "text", "label": "Texto" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "AC Trust bar",
+      "blocks": [
+        { "type": "item", "settings": { "title": "Rastreio incluso", "text": "Código em até 48h no WhatsApp/e-mail" } },
+        { "type": "item", "settings": { "title": "Pix + cartão 3x", "text": "Via Mercado Pago, boleto OFF" } },
+        { "type": "item", "settings": { "title": "7 dias de garantia", "text": "Vídeo do defeito = troca" } },
+        { "type": "item", "settings": { "title": "Feito pra apê", "text": "Testado em gato/cão de apartamento" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

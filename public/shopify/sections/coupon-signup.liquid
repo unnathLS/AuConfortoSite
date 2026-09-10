@@ -1,0 +1,35 @@
+{{ 'auconforto.css' | asset_url | stylesheet_tag }}
+
+<section class="ac-coupon" {{ section.shopify_attributes }}>
+  <h2 style="font-size:2rem;margin:0 0 .75rem;">{{ section.settings.title }}</h2>
+  <p style="opacity:.75;max-width:28rem;margin:0 auto 1.5rem;">{{ section.settings.text }}</p>
+  {% form 'customer', class: 'ac-coupon__form' %}
+    <input type="hidden" name="contact[tags]" value="newsletter,volta10">
+    <div style="display:flex;gap:.75rem;max-width:32rem;margin:0 auto;flex-wrap:wrap;justify-content:center;">
+      <input
+        type="email"
+        name="contact[email]"
+        required
+        placeholder="teu@email.com"
+        style="min-height:48px;flex:1;min-width:16rem;padding:0 1rem;border-radius:8px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.06);color:#fff;"
+      >
+      <button type="submit" class="ac-btn ac-btn--primary">{{ section.settings.button }}</button>
+    </div>
+    {% if form.posted_successfully? %}
+      <p style="margin-top:1rem;">Cupom VOLTA10 a caminho do e-mail.</p>
+    {% endif %}
+  {% endform %}
+</section>
+
+{% schema %}
+{
+  "name": "AC Cupom",
+  "class": "section-ac-coupon",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Título", "default": "Ganha 10% OFF na primeira compra" },
+    { "type": "textarea", "id": "text", "label": "Texto", "default": "Deixa teu e-mail e recebe VOLTA10 + rastreio sem enrolação." },
+    { "type": "text", "id": "button", "label": "Botão", "default": "Quero meu cupom" }
+  ],
+  "presets": [{ "name": "AC Cupom" }]
+}
+{% endschema %}

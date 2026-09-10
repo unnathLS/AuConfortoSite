@@ -1,0 +1,20 @@
+{% comment %}
+Cola em: Personalizar → Adicionar seção → Liquid personalizado (no topo da home).
+Desliga a faixa de anúncio nativa em Configurações do tema.
+{% endcomment %}
+<style>
+  .ac-a{background:#1f1814;color:#fbf7f1;overflow:hidden}
+  .ac-a__t{display:flex;width:max-content;gap:2.5rem;animation:ac-a 28s linear infinite}
+  .ac-a a{color:inherit;text-decoration:none;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:.7rem 0;white-space:nowrap}
+  @keyframes ac-a{to{transform:translateX(-50%)}}
+</style>
+<div class="ac-a">
+  <div class="ac-a__t">
+    <a href="/collections/pets">FRETE GRÁTIS ACIMA DE R$149 | PIX COM 5% OFF</a>
+    <a href="/collections/pets">8-15 DIAS ÚTEIS COM RASTREIO | IMPOSTO INCLUSO</a>
+    <a href="/collections/pets">CUPOM VOLTA10 = 10% OFF NA PRIMEIRA COMPRA</a>
+    <a href="/collections/pets" aria-hidden="true">FRETE GRÁTIS ACIMA DE R$149 | PIX COM 5% OFF</a>
+    <a href="/collections/pets" aria-hidden="true">8-15 DIAS ÚTEIS COM RASTREIO | IMPOSTO INCLUSO</a>
+    <a href="/collections/pets" aria-hidden="true">CUPOM VOLTA10 = 10% OFF NA PRIMEIRA COMPRA</a>
+  </div>
+</div>

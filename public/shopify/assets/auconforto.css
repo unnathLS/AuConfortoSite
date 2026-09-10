@@ -1,0 +1,118 @@
+/* AuConforto — cola em assets/auconforto.css e chama no theme.liquid */
+:root {
+  --ac-bg: #f3ede4;
+  --ac-surface: #fbf7f1;
+  --ac-fg: #1f1814;
+  --ac-muted: #6f645a;
+  --ac-primary: #b54a2a;
+  --ac-primary-fg: #fbf7f1;
+  --ac-border: #e4d9cc;
+}
+
+.ac-announcement {
+  background: var(--ac-fg);
+  color: var(--ac-primary-fg);
+  overflow: hidden;
+}
+.ac-announcement__track {
+  display: flex;
+  width: max-content;
+  gap: 2.5rem;
+  animation: ac-marquee 28s linear infinite;
+}
+.ac-announcement__item {
+  color: inherit;
+  text-decoration: none;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.7rem 0;
+  white-space: nowrap;
+}
+@keyframes ac-marquee {
+  to { transform: translateX(-50%); }
+}
+
+.ac-hero {
+  position: relative;
+  min-height: 78vh;
+  color: var(--ac-primary-fg);
+  display: flex;
+  align-items: center;
+}
+.ac-hero__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.ac-hero__shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(31,24,20,.78), rgba(31,24,20,.25));
+}
+.ac-hero__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 5rem 1.5rem;
+}
+.ac-hero h2,
+.ac-hero .ac-hero__title {
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 1.12;
+  max-width: 18ch;
+  margin: 0.6rem 0 1rem;
+}
+.ac-hero__btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+.ac-btn {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  padding: 0 1.4rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.ac-btn--primary { background: var(--ac-primary); color: var(--ac-primary-fg); }
+.ac-btn--ghost { background: rgba(31,24,20,.25); color: #fff; border: 1px solid rgba(255,255,255,.25); }
+.ac-hero__pills { margin-top: 1.25rem; font-size: 0.9rem; opacity: 0.8; }
+
+.ac-trust {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem;
+}
+.ac-trust h3 { margin: 0 0 0.35rem; font-size: 1rem; }
+.ac-trust p { margin: 0; color: var(--ac-muted); font-size: 0.9rem; }
+
+.ac-why { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; max-width: 72rem; margin: 0 auto; padding: 4rem 1.5rem; }
+.ac-why img { width: 100%; height: auto; border-radius: 12px; }
+.ac-faq { max-width: 42rem; margin: 0 auto; padding: 4rem 1.5rem; }
+.ac-faq details { border-bottom: 1px solid var(--ac-border); padding: 1rem 0; }
+.ac-faq summary { cursor: pointer; font-weight: 600; font-size: 1.1rem; }
+.ac-coupon { background: var(--ac-fg); color: var(--ac-primary-fg); text-align: center; padding: 4rem 1.5rem; }
+.ac-badge {
+  position: absolute; top: 0.75rem; left: 0.75rem;
+  background: var(--ac-fg); color: var(--ac-primary-fg);
+  font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 0.3rem 0.6rem; border-radius: 999px; font-weight: 600;
+}
+
+@media (max-width: 749px) {
+  .ac-trust, .ac-why { grid-template-columns: 1fr; }
+  .ac-hero { min-height: 70vh; align-items: flex-end; }
+  .ac-hero__inner { text-align: center; }
+  .ac-hero__btns { justify-content: center; }
+}

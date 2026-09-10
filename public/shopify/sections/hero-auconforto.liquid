@@ -1,0 +1,67 @@
+{{ 'auconforto.css' | asset_url | stylesheet_tag }}
+
+<section class="ac-hero" {{ section.shopify_attributes }}>
+  {% if section.settings.image != blank %}
+    {{ section.settings.image | image_url: width: 2400 | image_tag:
+      loading: 'eager',
+      class: 'ac-hero__img',
+      alt: section.settings.image.alt | default: 'Gato e cão no sofá do apê'
+    }}
+  {% else %}
+    <div class="ac-hero__img" style="background:#3a322c;"></div>
+  {% endif %}
+  <div class="ac-hero__shade"></div>
+  <div class="ac-hero__inner">
+    <p style="letter-spacing:.2em;text-transform:uppercase;font-size:.75rem;opacity:.8;">
+      {{ section.settings.kicker }}
+    </p>
+    <h2 class="ac-hero__title">{{ section.settings.title }}</h2>
+    <p style="max-width:36rem;font-size:1.05rem;opacity:.88;">{{ section.settings.subtitle }}</p>
+    <div class="ac-hero__btns">
+      {% if section.settings.btn1_label != blank %}
+        <a class="ac-btn ac-btn--primary" href="{{ section.settings.btn1_link }}">{{ section.settings.btn1_label }}</a>
+      {% endif %}
+      {% if section.settings.btn2_label != blank %}
+        <a class="ac-btn ac-btn--ghost" href="{{ section.settings.btn2_link }}">{{ section.settings.btn2_label }}</a>
+      {% endif %}
+    </div>
+    {% if section.settings.pills != blank %}
+      <p class="ac-hero__pills">{{ section.settings.pills }}</p>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "AC Hero",
+  "tag": "section",
+  "class": "section-ac-hero",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Imagem (gato/cão no sofá, sem inglês)" },
+    { "type": "text", "id": "kicker", "label": "Linha pequena", "default": "AuConforto · pets em apartamento" },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Título",
+      "default": "Apartamento com pet não precisa viver com pelo, calor e tédio"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtítulo",
+      "default": "4 soluções testadas pra cães e gatos em apê. Pix com desconto, rastreio incluso, 7 dias de garantia."
+    },
+    { "type": "text", "id": "btn1_label", "label": "Botão 1", "default": "Ver os 4 mais vendidos" },
+    { "type": "url", "id": "btn1_link", "label": "Link botão 1", "default": "/collections/pets" },
+    { "type": "text", "id": "btn2_label", "label": "Botão 2", "default": "Rastrear meu pedido" },
+    { "type": "url", "id": "btn2_link", "label": "Link botão 2", "default": "/pages/rastrear-pedido" },
+    {
+      "type": "text",
+      "id": "pills",
+      "label": "Linha sob os botões",
+      "default": "Pix com desconto · 8–15 dias úteis com rastreio · 7 dias contra defeito"
+    }
+  ],
+  "presets": [{ "name": "AC Hero" }]
+}
+{% endschema %}
