@@ -1,0 +1,30 @@
+<div class="ac-collection-head page-width" {{ section.shopify_attributes }}>
+  <p class="ac-section-kicker">{{ section.settings.kicker }}</p>
+  <h1 class="ac-section-title">{{ collection.title | default: section.settings.title }}</h1>
+  <p class="ac-section-sub">{{ collection.description | default: section.settings.subtitle }}</p>
+  <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin:1rem 0 0">
+    <a class="ac-btn ac-btn--light" style="min-height:42px" href="/collections/pets">Ver tudo</a>
+    <a class="ac-btn ac-btn--light" style="min-height:42px" href="/collections/gatos">🐈 Gatos</a>
+    <a class="ac-btn ac-btn--light" style="min-height:42px" href="/collections/caes">🐕 Cachorros</a>
+  </div>
+</div>
+<div class="ac-featured" style="padding-top:0">
+  <div class="ac-grid-4">
+    {% for product in collection.products %}
+      {% render 'card-product-auconforto', product: product %}
+    {% else %}
+      <p>Coleção vazia por enquanto. Adiciona os produtos no admin: Produtos → Coleções → <strong>{{ collection.handle }}</strong>.</p>
+    {% endfor %}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "AC Coleção",
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Kicker", "default": "AuConforto" },
+    { "type": "text", "id": "title", "label": "Título fallback", "default": "Todos pra apê" },
+    { "type": "text", "id": "subtitle", "label": "Sub fallback", "default": "Escolhe pela tua dor. Frete grátis acima de R$149." }
+  ],
+  "presets": [{ "name": "AC Coleção" }]
+}
+{% endschema %}

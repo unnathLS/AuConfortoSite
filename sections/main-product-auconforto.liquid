@@ -1,0 +1,92 @@
+{% comment %} Produto AuConforto — foco conversão: Pix, rastreio, garantia, FAQ {% endcomment %}
+<section class="ac-product" {{ section.shopify_attributes }}>
+  <div class="ac-product__gallery">
+    <div class="ac-product__main-img">
+      {% if product.featured_image %}
+        {{ product.featured_image | image_url: width: 1200 | image_tag: loading: 'eager', id: 'AcMainImg', alt: product.title }}
+      {% else %}
+        <span style="font-size:4rem">🐾</span>
+      {% endif %}
+      {% render 'badge-auconforto', product: product %}
+    </div>
+    {% if product.images.size > 1 %}
+      <div class="ac-thumbs">
+        {% for img in product.images limit: 5 %}
+          {% assign thumb_full = img | image_url: width: 1200 %}
+          {{ img | image_url: width: 200 | image_tag: loading: 'lazy', data-full: thumb_full }}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="ac-product__info">
+    <p class="ac-section-kicker">AuConforto · feito pra apê</p>
+    <h1>{{ product.title }}</h1>
+    {% render 'price-auconforto', product: product %}
+    <div class="ac-trustline">💳 Pix com 5% OFF + cartão 3x &nbsp;·&nbsp; 🚚 8–15 dias úteis com rastreio &nbsp;·&nbsp; 🛡️ 7 dias troca com vídeo</div>
+
+    {% form 'product', product, id: 'AcAddForm' %}
+      <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+      {% if product.variants.size > 1 %}
+        <label for="AcVariant" style="font-weight:700;font-size:.9rem">Cor / modelo</label>
+        <select id="AcVariant" name="id" style="width:100%;min-height:48px;border-radius:10px;border:1px solid var(--ac-border);padding:0 1rem;margin:.4rem 0 1rem">
+          {% for v in product.variants %}
+            <option value="{{ v.id }}" {% if v == product.selected_or_first_available_variant %}selected{% endif %}>{{ v.title }} — {{ v.price | money }}</option>
+          {% endfor %}
+        </select>
+      {% endif %}
+      <div class="ac-buy">
+        <div class="ac-qty"><button type="button" data-qty-minus>−</button><input type="number" name="quantity" value="1" min="1"><button type="button" data-qty-plus>+</button></div>
+        <button type="submit" class="ac-btn ac-btn--primary" style="flex:1" {% unless product.available %}disabled{% endunless %}>
+          {% if product.available %}Adicionar ao carrinho{% else %}Esgotado{% endif %}
+        </button>
+      </div>
+    {% endform %}
+    {{ form | payment_button }}
+
+    <div class="ac-product__desc">{{ product.description }}</div>
+
+    <div class="ac-collapsible">
+      <details open><summary>Quando chega?</summary><p>8–15 dias úteis com rastreio. Código em até 48h no WhatsApp/e-mail.</p></details>
+      <details><summary>Como é o frete?</summary><p>R$9,90 fixo com rastreio, grátis acima de R$149. Imposto incluso.</p></details>
+      <details><summary>E se quebrar?</summary><p>7 dias com vídeo = troca ou reembolso. Sem drama.</p></details>
+      <details><summary>Pix tem desconto?</summary><p>Sim, 5% OFF no Pix. Deixa teu e-mail na newsletter que a gente manda um desconto de boas-vindas.</p></details>
+      <details><summary>Serve pro meu pet?</summary><p>{% if product.handle contains 'moinho' %}Feito pra gatos — filhotes e adultos em apê.{% elsif product.handle contains 'tapete' %}Feito pra pets até 5 kg (XS 40x30) — gatos e cachorrinhos em apê quente.{% else %}Feito pra cães e gatos de pelo curto/médio em apê.{% endif %}</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="ac-featured">
+  <h2 class="ac-section-title">Completa teu apê</h2>
+  <p class="ac-section-sub">Quem levou um, voltou pra fechar o kit com frete grátis.</p>
+  <div class="ac-grid-4">
+    {% assign rel_handles = section.settings.related_handles | split: ',' %}
+    {% assign rel_found = 0 %}
+    {% for h in rel_handles %}
+      {% assign handle = h | strip %}
+      {% assign p = all_products[handle] %}
+      {% if p != blank and p.handle != product.handle %}
+        {% assign rel_found = rel_found | plus: 1 %}
+        {% render 'card-product-auconforto', product: p %}
+      {% endif %}
+    {% endfor %}
+    {% if rel_found == 0 %}
+      {% for p in collections.all.products limit: 4 %}
+        {% unless p.handle == product.handle %}
+          {% render 'card-product-auconforto', product: p %}
+        {% endunless %}
+      {% endfor %}
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "AC Produto",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "related_handles", "label": "Handles relacionados (vírgula)", "default": "escova-a-vapor,pente-magico,moinho-giratorio,tapete-gel-xs" }
+  ],
+  "presets": [{ "name": "AC Produto" }]
+}
+{% endschema %}

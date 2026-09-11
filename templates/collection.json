@@ -1,0 +1,6 @@
+{
+  "sections": {
+    "main": { "type": "main-collection-auconforto", "settings": { "kicker": "AuConforto", "title": "Todos pra apê", "subtitle": "Escolhe pela tua dor. Frete grátis acima de R$149." } }
+  },
+  "order": ["main"]
+}

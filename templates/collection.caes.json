@@ -1,0 +1,6 @@
+{
+  "sections": {
+    "main": { "type": "main-collection-auconforto", "settings": { "kicker": "Só pra cachorros 🐕", "title": "Cachorros em apê", "subtitle": "Sem pelo no sofá + fresco no calor. Sem drama." } }
+  },
+  "order": ["main"]
+}

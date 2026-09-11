@@ -1,0 +1,52 @@
+{% comment %} Featured Pets — ordem travada: Escova → Pente → Moinho → Tapete. Usa product_list pra garantir ordem + fallback pra coleção. {% endcomment %}
+<section class="ac-featured" {{ section.shopify_attributes }}>
+  <p class="ac-section-kicker">{{ section.settings.kicker }}</p>
+  <h2 class="ac-section-title">{{ section.settings.title }}</h2>
+  <p class="ac-section-sub">{{ section.settings.subtitle }}</p>
+
+  <div class="ac-grid-4">
+    {% if section.settings.product_1 != blank or section.settings.product_2 != blank or section.settings.product_3 != blank or section.settings.product_4 != blank %}
+      {% if section.settings.product_1 != blank %}{% render 'card-product-auconforto', product: section.settings.product_1 %}{% endif %}
+      {% if section.settings.product_2 != blank %}{% render 'card-product-auconforto', product: section.settings.product_2 %}{% endif %}
+      {% if section.settings.product_3 != blank %}{% render 'card-product-auconforto', product: section.settings.product_3 %}{% endif %}
+      {% if section.settings.product_4 != blank %}{% render 'card-product-auconforto', product: section.settings.product_4 %}{% endif %}
+    {% else %}
+      {% assign col = collections[section.settings.collection] %}
+      {% if col != blank and col.products_count > 0 %}
+        {% for product in col.products limit: 4 %}
+          {% render 'card-product-auconforto', product: product %}
+        {% endfor %}
+      {% elsif collections.all.products_count > 0 %}
+        {% for product in collections.all.products limit: 4 %}
+          {% render 'card-product-auconforto', product: product %}
+        {% endfor %}
+      {% else %}
+        <p>Escolhe a coleção <strong>pets</strong> aqui no customizer, ou seleciona os 4 produtos na ordem. Sem drama.</p>
+      {% endif %}
+    {% endif %}
+  </div>
+
+  {% if section.settings.button_label != blank %}
+    <p style="margin-top:1.6rem"><a class="ac-btn ac-btn--dark" href="{{ section.settings.button_link | default: '/collections/pets' }}">{{ section.settings.button_label }}</a></p>
+  {% endif %}
+</section>
+{% schema %}
+{
+  "name": "AC Featured pets",
+  "class": "section-ac-featured",
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Kicker", "default": "Os queridinhos" },
+    { "type": "text", "id": "title", "label": "Título", "default": "Os 4 que mais saem pra quem mora em apê" },
+    { "type": "text", "id": "subtitle", "label": "Sub", "default": "Escolhe pela tua dor. Frete grátis acima de R$149." },
+    { "type": "collection", "id": "collection", "label": "Coleção (pets)" },
+    { "type": "header", "content": "Ordem travada (recomendado — garante a ordem pedida)" },
+    { "type": "product", "id": "product_1", "label": "1º — Escova a Vapor" },
+    { "type": "product", "id": "product_2", "label": "2º — Pente Mágico" },
+    { "type": "product", "id": "product_3", "label": "3º — Moinho Giratório" },
+    { "type": "product", "id": "product_4", "label": "4º — Tapete Gel XS" },
+    { "type": "text", "id": "button_label", "label": "Botão", "default": "Ver tudo" },
+    { "type": "url", "id": "button_link", "label": "Link botão", "default": "/collections/pets" }
+  ],
+  "presets": [{ "name": "AC Featured pets" }]
+}
+{% endschema %}

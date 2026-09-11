@@ -1,0 +1,30 @@
+<div class="ac-trust" {{ section.shopify_attributes }}>
+  {% for block in section.blocks %}
+    <div class="ac-trust__card" {{ block.shopify_attributes }}>
+      <div class="ac-trust__ico">{{ block.settings.icon }}</div>
+      <h3>{{ block.settings.title }}</h3>
+      <p>{{ block.settings.text }}</p>
+    </div>
+  {% endfor %}
+</div>
+{% schema %}
+{
+  "name": "AC Trust bar",
+  "tag": "section",
+  "class": "section-ac-trust",
+  "max_blocks": 4,
+  "blocks": [
+    { "type": "item", "name": "Item", "settings": [
+      { "type": "text", "id": "icon", "label": "Ícone (emoji)", "default": "🚚" },
+      { "type": "text", "id": "title", "label": "Título", "default": "Rastreio incluso" },
+      { "type": "textarea", "id": "text", "label": "Texto", "default": "Código em até 48h no WhatsApp/e-mail" }
+    ]}
+  ],
+  "presets": [{ "name": "AC Trust bar", "blocks": [
+    { "type": "item", "settings": { "icon": "🚚", "title": "Rastreio incluso", "text": "Código em até 48h no WhatsApp/e-mail" } },
+    { "type": "item", "settings": { "icon": "💳", "title": "Pix + cartão 3x", "text": "Via Mercado Pago, boleto OFF" } },
+    { "type": "item", "settings": { "icon": "🛡️", "title": "7 dias de garantia", "text": "Vídeo do defeito = troca" } },
+    { "type": "item", "settings": { "icon": "🏠", "title": "Feito pra apê", "text": "Testado em gato/cão de apartamento" } }
+  ]}]
+}
+{% endschema %}

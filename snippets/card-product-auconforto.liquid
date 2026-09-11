@@ -1,0 +1,27 @@
+{% comment %} Card produto AuConforto com badge + Pix estimado {% endcomment %}
+<article class="ac-card">
+  <a class="ac-card__media" href="{{ product.url }}">
+    {% if product.featured_image %}
+      {{ product.featured_image | image_url: width: 800 | image_tag: loading: 'lazy', alt: product.title }}
+    {% else %}
+      <span style="font-size:3rem;display:flex;align-items:center;justify-content:center;height:100%">🐾</span>
+    {% endif %}
+    {% render 'badge-auconforto', product: product %}
+  </a>
+  <div class="ac-card__body">
+    <h3 class="ac-card__title"><a href="{{ product.url }}">{{ product.title }}</a></h3>
+    {% if product.metafields.custom.resumo != blank %}
+      <p class="ac-card__desc">{{ product.metafields.custom.resumo }}</p>
+    {% elsif product.handle contains 'escova-a-vapor' or product.title contains 'Vapor' %}
+      <p class="ac-card__desc">Tira o subpelo que aspirador não pega. 5 min/dia = 80% menos pelo.</p>
+    {% elsif product.handle contains 'pente' or product.title contains 'Pente' %}
+      <p class="ac-card__desc">Entrada barata, dentes arredondados, resultado na primeira passada.</p>
+    {% elsif product.handle contains 'moinho' or product.title contains 'Moinho' %}
+      <p class="ac-card__desc">Cansa o gato em ~15 min sem o dono. Sem pilha, sem motor.</p>
+    {% elsif product.handle contains 'tapete' or product.title contains 'Tapete' %}
+      <p class="ac-card__desc">Alivia calor sem molhar, sem geladeira, sem energia. Até 5 kg.</p>
+    {% endif %}
+    {% render 'price-auconforto', product: product %}
+    <a class="ac-btn ac-btn--dark ac-card__btn" href="{{ product.url }}">Ver produto</a>
+  </div>
+</article>

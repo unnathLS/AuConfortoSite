@@ -1,0 +1,40 @@
+{
+  "general": {
+    "search": "Buscar",
+    "cart": "Carrinho",
+    "close": "Fechar",
+    "view_all": "Ver tudo",
+    "from": "a partir de"
+  },
+  "general.pagination": {
+    "page": "Página {number}"
+  },
+  "products": {
+    "add_to_cart": "Adicionar ao carrinho",
+    "buy_now": "Comprar agora",
+    "sold_out": "Esgotado",
+    "sale": "Oferta",
+    "pix_note": "Pix com 5% OFF + cartão 3x",
+    "ship_note": "8–15 dias úteis com rastreio",
+    "guarantee_note": "7 dias contra defeito"
+  },
+  "cart": {
+    "title": "Teu carrinho",
+    "empty": "Tá vazio por aqui. Bora resolver o pelo, o calor ou o tédio?",
+    "checkout": "Finalizar compra",
+    "keep_buying": "Ver os 4 mais vendidos",
+    "free_shipping_progress": "Faltam {amount} pro frete grátis",
+    "free_shipping_done": "Tu ganhou FRETE GRÁTIS 🎉"
+  },
+  "search": {
+    "title": "Buscar",
+    "placeholder": "Busca por pelo, calor, gato…",
+    "results": "Resultados",
+    "no_results": "Nada por aqui. Tenta “escova”, “gato” ou “tapete”."
+  },
+  "not_found": {
+    "title": "Ops, essa página fugiu como gato",
+    "text": "Volta pro início que a gente resolve.",
+    "button": "Voltar pro início"
+  }
+}

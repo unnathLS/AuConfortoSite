@@ -1,0 +1,9 @@
+<div class="page-width" style="padding:2rem 1.5rem 3rem" {{ section.shopify_attributes }}>
+  <h1>Buscar</h1>
+  <form action="/search" method="get"><input type="search" name="q" value="{{ search.terms | escape }}" placeholder="Busca por pelo, calor, gato…" style="width:100%;min-height:52px;border-radius:10px;border:1px solid var(--ac-border);padding:0 1rem"></form>
+  {% if search.performed %}
+    {% if search.results_count == 0 %}<p>Nada por aqui. Tenta “escova”, “gato” ou “tapete”.</p>
+    {% else %}<div class="ac-grid-4" style="margin-top:1.5rem">{% for item in search.results %}{% if item.object_type == 'product' %}{% render 'card-product-auconforto', product: item %}{% endif %}{% endfor %}</div>{% endif %}
+  {% endif %}
+</div>
+{% schema %}{ "name": "AC Busca", "settings": [], "presets": [{ "name": "AC Busca" }] }{% endschema %}

@@ -1,0 +1,41 @@
+<footer class="ac-footer" {{ section.shopify_attributes }}>
+  <div class="ac-footer__inner">
+    <div>
+      <a href="/" class="ac-logo" style="color:#fff">{{ section.settings.brand_title | default: 'AuConforto' }}</a>
+      <p style="opacity:.8;font-size:.92rem;max-width:28ch">{{ section.settings.brand_text }}</p>
+      <p style="font-size:.85rem;opacity:.8">💳 Pix + cartão 3x · 🚚 rastreio incluso</p>
+      {% if section.settings.show_payments %}
+        <div class="ac-pay"><span>Pix</span><span>Visa</span><span>Master</span><span>Mercado Pago</span></div>
+      {% endif %}
+    </div>
+    <div>
+      <h4>Produtos</h4>
+      <a href="/collections/pets">Todos os produtos</a>
+      <a href="/pages/rastrear-pedido">Rastrear pedido</a>
+      <a href="/pages/contato">Fale conosco</a>
+    </div>
+    <div>
+      <h4>Ajuda</h4>
+      <a href="/pages/prazo-de-entrega">Prazo de entrega</a>
+      <a href="/pages/trocas-e-garantia">Trocas e garantia</a>
+      <a href="/pages/privacidade">Privacidade</a>
+      <a href="/pages/termos">Termos</a>
+      <a href="/pages/reembolso">Reembolso</a>
+    </div>
+  </div>
+  <div class="ac-footer__bar">© {{ 'now' | date: '%Y' }} AuConforto — CNPJ em regularização MEI. Suporte em até 24h úteis.</div>
+</footer>
+{% schema %}
+{
+  "name": "AC Footer",
+  "tag": "footer",
+  "class": "section-ac-footer",
+  "limit": 1,
+  "settings": [
+    { "type": "text", "id": "brand_title", "label": "Marca", "default": "AuConforto" },
+    { "type": "textarea", "id": "brand_text", "label": "Descrição", "default": "Conforto pra pets em apartamento. Sem pelo, sem calor, sem tédio — sem drama." },
+    { "type": "checkbox", "id": "show_payments", "label": "Mostrar pagamentos", "default": true }
+  ],
+  "presets": [{ "name": "AC Footer" }]
+}
+{% endschema %}

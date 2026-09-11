@@ -1,0 +1,40 @@
+{
+  "general": {
+    "search": "Search",
+    "cart": "Cart",
+    "close": "Close",
+    "view_all": "View all",
+    "from": "from"
+  },
+  "general.pagination": {
+    "page": "Page {number}"
+  },
+  "products": {
+    "add_to_cart": "Add to cart",
+    "buy_now": "Buy now",
+    "sold_out": "Sold out",
+    "sale": "Sale",
+    "pix_note": "Pix discount + 3x card",
+    "ship_note": "8-15 business days with tracking",
+    "guarantee_note": "7-day warranty"
+  },
+  "cart": {
+    "title": "Your cart",
+    "empty": "Empty.",
+    "checkout": "Checkout",
+    "keep_buying": "View best sellers",
+    "free_shipping_progress": "{amount} away from free shipping",
+    "free_shipping_done": "Free shipping unlocked"
+  },
+  "search": {
+    "title": "Search",
+    "placeholder": "Search…",
+    "results": "Results",
+    "no_results": "No results."
+  },
+  "not_found": {
+    "title": "Page not found",
+    "text": "Back to home.",
+    "button": "Back to home"
+  }
+}

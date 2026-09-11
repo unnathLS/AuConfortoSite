@@ -1,0 +1,7 @@
+{% if product.tags contains 'mais-vendido' or product.title contains 'Vapor' or product.title contains 'Pente' %}
+  <span class="ac-badge">Mais vendido</span>
+{% elsif product.tags contains 'pra-gatos' or product.title contains 'Moinho' %}
+  <span class="ac-badge">Pra gatos</span>
+{% elsif product.compare_at_price > product.price %}
+  <span class="ac-badge ac-badge--sale">Oferta</span>
+{% endif %}

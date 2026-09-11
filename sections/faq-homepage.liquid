@@ -1,0 +1,36 @@
+<section class="ac-faq" {{ section.shopify_attributes }}>
+  <p class="ac-section-kicker" style="text-align:center">{{ section.settings.kicker | default: 'Sem enrolação' }}</p>
+  <h2 class="ac-section-title" style="text-align:center;max-width:none">{{ section.settings.title }}</h2>
+  <p class="ac-section-sub" style="text-align:center">{{ section.settings.subtitle }}</p>
+  {% for block in section.blocks %}
+    <details {{ block.shopify_attributes }} {% if forloop.first %}open{% endif %}>
+      <summary>{{ block.settings.question }}</summary>
+      <p>{{ block.settings.answer }}</p>
+    </details>
+  {% endfor %}
+</section>
+{% schema %}
+{
+  "name": "AC FAQ",
+  "class": "section-ac-faq",
+  "max_blocks": 8,
+  "settings": [
+    { "type": "text", "id": "title", "label": "Título", "default": "Perguntas de quem mora em apê" },
+    { "type": "text", "id": "subtitle", "label": "Sub", "default": "As 5 que mais chegam no suporte." },
+    { "type": "text", "id": "kicker", "label": "Kicker", "default": "Sem enrolação" }
+  ],
+  "blocks": [
+    { "type": "item", "name": "Pergunta", "settings": [
+      { "type": "text", "id": "question", "label": "Pergunta" },
+      { "type": "textarea", "id": "answer", "label": "Resposta" }
+    ]}
+  ],
+  "presets": [{ "name": "AC FAQ", "blocks": [
+    { "type": "item", "settings": { "question": "Quando chega?", "answer": "8-15 dias úteis com rastreio. Tu recebe o código em até 48h no WhatsApp/e-mail após o pagamento aprovar." } },
+    { "type": "item", "settings": { "question": "Como é o frete?", "answer": "R$9,90 fixo com rastreio. Grátis acima de R$149 automático no checkout. Imposto incluso, sem taxa extra." } },
+    { "type": "item", "settings": { "question": "E se quebrar?", "answer": "7 dias contra defeito: manda vídeo que a gente troca ou reembolsa. Sem burocracia, sem drama." } },
+    { "type": "item", "settings": { "question": "Pix tem desconto?", "answer": "Sim, 5% OFF no Pix. Deixa teu e-mail na newsletter que a gente manda um desconto de boas-vindas. Cartão em até 3x via Mercado Pago." } },
+    { "type": "item", "settings": { "question": "Serve pro meu pet?", "answer": "Pente e Escova: cães e gatos de pelo curto/médio. Moinho: gatos. Tapete XS 40x30: pets até 5 kg. Mora em apê? Foi feito pra ti." } }
+  ]}]
+}
+{% endschema %}

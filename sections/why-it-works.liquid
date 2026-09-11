@@ -1,0 +1,41 @@
+<section class="ac-why" {{ section.shopify_attributes }}>
+  {% for block in section.blocks %}
+    <article class="ac-why__card" {{ block.shopify_attributes }}>
+      <div class="ac-why__media">
+        {% if block.settings.image != blank %}
+          {{ block.settings.image | image_url: width: 1200 | image_tag: loading: 'lazy', alt: block.settings.title }}
+        {% else %}
+          <span>{{ block.settings.emoji | default: '🐾' }}</span>
+        {% endif %}
+      </div>
+      <div class="ac-why__body">
+        <h3>{{ block.settings.title }}</h3>
+        <p>{{ block.settings.text }}</p>
+        {% if block.settings.cta_label != blank %}
+          <a class="ac-link" href="{{ block.settings.cta_link }}">{{ block.settings.cta_label }} →</a>
+        {% endif %}
+      </div>
+    </article>
+  {% endfor %}
+</section>
+{% schema %}
+{
+  "name": "AC Por que funciona",
+  "class": "section-ac-why",
+  "max_blocks": 2,
+  "blocks": [
+    { "type": "story", "name": "Bloco", "settings": [
+      { "type": "image_picker", "id": "image", "label": "Imagem (opcional)" },
+      { "type": "text", "id": "emoji", "label": "Emoji se sem imagem", "default": "🐾" },
+      { "type": "text", "id": "title", "label": "Título", "default": "5 min por dia, 80% menos pelo no sofá" },
+      { "type": "textarea", "id": "text", "label": "Texto", "default": "Pente + Escova Vapor tiram o subpelo que aspirador não pega." },
+      { "type": "text", "id": "cta_label", "label": "CTA", "default": "Quero casa sem pelo" },
+      { "type": "url", "id": "cta_link", "label": "Link CTA", "default": "/products/escova-a-vapor" }
+    ]}
+  ],
+  "presets": [{ "name": "AC Por que funciona", "blocks": [
+    { "type": "story", "settings": { "emoji": "🛋️", "title": "5 min por dia, 80% menos pelo no sofá", "text": "Escova a Vapor + Pente Mágico tiram o subpelo que aspirador não pega. Sem puxar, sem machucar. Gato ronrona, cachorro fica quieto.", "cta_label": "Quero casa sem pelo", "cta_link": "/products/escova-a-vapor" } },
+    { "type": "story", "settings": { "emoji": "😻", "title": "Gato sozinho não precisa destruir o sofá", "text": "Moinho cansa em ~15 min sem tu precisar. Tapete Gel alivia o calor sem molhar, sem geladeira, sem energia.", "cta_label": "Quero gato tranquilo", "cta_link": "/products/moinho-giratorio" } }
+  ]}]
+}
+{% endschema %}

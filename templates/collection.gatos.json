@@ -1,0 +1,6 @@
+{
+  "sections": {
+    "main": { "type": "main-collection-auconforto", "settings": { "kicker": "Só pra gatos 🐈", "title": "Gatos em apê", "subtitle": "Anti-tédio + fresco + sem pelo. Sem drama." } }
+  },
+  "order": ["main"]
+}

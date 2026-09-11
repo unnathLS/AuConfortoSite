@@ -1,0 +1,6 @@
+{
+  "sections": {
+    "main": { "type": "main-product-auconforto", "settings": { "related_handles": "escova-a-vapor,pente-magico,moinho-giratorio,tapete-gel-xs" } }
+  },
+  "order": ["main"]
+}

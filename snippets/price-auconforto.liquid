@@ -1,0 +1,8 @@
+<div class="ac-price">
+  <span class="ac-price__now">{{ product.price | money }}</span>
+  {% if product.compare_at_price > product.price %}
+    <s class="ac-price__was">{{ product.compare_at_price | money }}</s>
+  {% endif %}
+</div>
+{% assign pix = product.price | times: 0.95 %}
+<p class="ac-price__pix" style="margin:0">💚 {{ pix | money }} no Pix (5% OFF)</p>

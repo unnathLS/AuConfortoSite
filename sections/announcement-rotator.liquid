@@ -1,0 +1,30 @@
+<div class="ac-announcement" {{ section.shopify_attributes }}>
+  <div class="ac-announcement__track">
+    {% for i in (1..2) %}
+      {% for block in section.blocks %}
+        <a class="ac-announcement__item" href="{{ block.settings.link | default: '/collections/pets' }}" {{ block.shopify_attributes }} {% if i == 2 %}aria-hidden="true" tabindex="-1"{% endif %}>
+          {{ block.settings.text }}
+        </a>
+      {% endfor %}
+    {% endfor %}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "AC Anúncio rotativo",
+  "tag": "section",
+  "class": "section-ac-announcement",
+  "limit": 1,
+  "settings": [],
+  "blocks": [
+    { "type": "message", "name": "Mensagem", "limit": 6, "settings": [
+      { "type": "text", "id": "text", "label": "Texto", "default": "FRETE GRÁTIS ACIMA DE R$149 | PIX COM 5% OFF" },
+      { "type": "url", "id": "link", "label": "Link", "default": "/collections/pets" }
+    ]}
+  ],
+  "presets": [{ "name": "AC Anúncio rotativo", "blocks": [
+    { "type": "message", "settings": { "text": "FRETE GRÁTIS ACIMA DE R$149 | PIX COM 5% OFF", "link": "/collections/pets" } },
+    { "type": "message", "settings": { "text": "8-15 DIAS ÚTEIS COM RASTREIO | IMPOSTO INCLUSO", "link": "/collections/pets" } }
+  ]}]
+}
+{% endschema %}

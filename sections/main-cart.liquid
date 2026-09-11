@@ -1,0 +1,21 @@
+<div class="page-width" style="padding:2rem 1.5rem 3rem" {{ section.shopify_attributes }}>
+  <h1>Teu carrinho</h1>
+  {% if cart.item_count == 0 %}
+    <p>Tá vazio por aqui. Bora resolver o pelo, o calor ou o tédio?</p>
+    <p><a class="ac-btn ac-btn--primary" href="/collections/pets">Ver os 4 mais vendidos</a></p>
+  {% else %}
+    <form action="/cart" method="post">
+      {% for item in cart.items %}
+        <div style="display:flex;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--ac-border)">
+          <img src="{{ item.image | image_url: width: 160 }}" alt="" style="width:80px;height:80px;object-fit:cover;border-radius:10px">
+          <div style="flex:1"><strong>{{ item.product.title }}</strong><br><small>{{ item.variant.title }} · {{ item.quantity }}x</small><br><strong>{{ item.final_line_price | money }}</strong></div>
+          <a href="/cart/change?line={{ forloop.index }}&quantity=0">remover</a>
+        </div>
+      {% endfor %}
+      <p><strong>Total: {{ cart.total_price | money }}</strong></p>
+      <p style="font-size:.9rem;color:var(--ac-muted)">Frete calculado no checkout · Grátis acima de R$149 · Pix com 5% OFF</p>
+      <button type="submit" name="checkout" class="ac-btn ac-btn--primary">Finalizar compra</button>
+    </form>
+  {% endif %}
+</div>
+{% schema %}{ "name": "AC Carrinho", "settings": [], "presets": [{ "name": "AC Carrinho" }] }{% endschema %}

@@ -1,0 +1,29 @@
+<div class="ac-page-head page-width" {{ section.shopify_attributes }}>
+  <p class="ac-section-kicker">AuConforto · ajuda</p>
+  <h1 class="ac-section-title">{{ page.title }}</h1>
+</div>
+<div class="ac-page">
+  {% if page.handle == 'rastrear-pedido' %}
+    <div class="ac-tracking">
+      <strong>Como rastrear em 30 seg:</strong>
+      <ol>
+        <li>Pagamento aprovado → código em até 48h úteis no WhatsApp/e-mail.</li>
+        <li>Clica no código e acompanha. Prazo total: 8–15 dias úteis.</li>
+        <li>Sem código após 3 dias úteis? Chama no suporte com nº do pedido.</li>
+      </ol>
+      <form onsubmit="event.preventDefault();const c=document.getElementById('AcTrack').value.trim().toUpperCase();if(c)window.open('https://t.17track.net/pt#nums='+encodeURIComponent(c),'_blank');">
+        <label for="AcTrack" style="font-weight:700">Cola teu código aqui:</label>
+        <div style="display:flex;gap:.6rem;margin-top:.5rem;flex-wrap:wrap">
+          <input id="AcTrack" type="text" placeholder="Ex: BR123456789CN" style="flex:1;min-width:12rem;min-height:48px;border-radius:10px;border:1px solid var(--ac-border);padding:0 1rem">
+          <button class="ac-btn ac-btn--dark" type="submit">Rastrear</button>
+        </div>
+      </form>
+      <p style="font-size:.85rem;color:var(--ac-muted)">Abre no 17track (rastreio universal, em português — mostra o trajeto desde a China). O código dos Correios só aparece aqui quando o pacote chega no Brasil, por isso o site dos Correios fica “não encontrado” nos primeiros dias — é normal.</p>
+    </div>
+  {% endif %}
+  {{ page.content }}
+  <p style="margin-top:2rem"><a class="ac-btn ac-btn--light" href="/collections/pets">Ver os 4 mais vendidos</a></p>
+</div>
+{% schema %}
+{ "name": "AC Página", "settings": [], "presets": [{ "name": "AC Página" }] }
+{% endschema %}
