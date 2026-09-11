@@ -12,7 +12,13 @@
         <h3>{{ block.settings.title }}</h3>
         <p>{{ block.settings.text }}</p>
         {% if block.settings.cta_label != blank %}
-          <a class="ac-link" href="{{ block.settings.cta_link }}">{{ block.settings.cta_label }} →</a>
+          {% assign cta_url = block.settings.cta_link %}
+          {% if cta_url == blank %}
+            {% if block.settings.title contains 'pelo' %}{% assign cta_url = '/products/escova-a-vapor' %}
+            {% elsif block.settings.title contains 'sofá' %}{% assign cta_url = '/products/moinho-giratorio' %}
+            {% else %}{% assign cta_url = '/collections/pets' %}{% endif %}
+          {% endif %}
+          <a class="ac-link" href="{{ cta_url }}">{{ block.settings.cta_label }} →</a>
         {% endif %}
       </div>
     </article>
@@ -30,12 +36,12 @@
       { "type": "text", "id": "title", "label": "Título", "default": "5 min por dia, 80% menos pelo no sofá" },
       { "type": "textarea", "id": "text", "label": "Texto", "default": "Pente + Escova Vapor tiram o subpelo que aspirador não pega." },
       { "type": "text", "id": "cta_label", "label": "CTA", "default": "Quero casa sem pelo" },
-      { "type": "url", "id": "cta_link", "label": "Link CTA", "default": "/products/escova-a-vapor" }
+      { "type": "url", "id": "cta_link", "label": "Link CTA" }
     ]}
   ],
   "presets": [{ "name": "AC Por que funciona", "blocks": [
-    { "type": "story", "settings": { "emoji": "🛋️", "title": "5 min por dia, 80% menos pelo no sofá", "text": "Escova a Vapor + Pente Mágico tiram o subpelo que aspirador não pega. Sem puxar, sem machucar. Gato ronrona, cachorro fica quieto.", "cta_label": "Quero casa sem pelo", "cta_link": "/products/escova-a-vapor" } },
-    { "type": "story", "settings": { "emoji": "😻", "title": "Gato sozinho não precisa destruir o sofá", "text": "Moinho cansa em ~15 min sem tu precisar. Tapete Gel alivia o calor sem molhar, sem geladeira, sem energia.", "cta_label": "Quero gato tranquilo", "cta_link": "/products/moinho-giratorio" } }
+    { "type": "story", "settings": { "emoji": "🛋️", "title": "5 min por dia, 80% menos pelo no sofá", "text": "Escova a Vapor + Pente Mágico tiram o subpelo que aspirador não pega. Sem puxar, sem machucar. Gato ronrona, cachorro fica quieto.", "cta_label": "Quero casa sem pelo" } },
+    { "type": "story", "settings": { "emoji": "😻", "title": "Gato sozinho não precisa destruir o sofá", "text": "Moinho cansa em ~15 min sem tu precisar. Tapete Gel alivia o calor sem molhar, sem geladeira, sem energia.", "cta_label": "Quero gato tranquilo" } }
   ]}]
 }
 {% endschema %}

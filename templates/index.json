@@ -7,9 +7,7 @@
         "title": "Apartamento com pet não precisa viver com pelo, calor e tédio",
         "subtitle": "4 soluções testadas pra cães e gatos em apê. Pix com desconto, rastreio incluso, 7 dias de garantia.",
         "btn1_label": "Ver os 4 mais vendidos",
-        "btn1_link": "/collections/pets",
         "btn2_label": "Rastrear meu pedido",
-        "btn2_link": "/pages/rastrear-pedido",
         "pills": "Pix com desconto · 8–15 dias úteis com rastreio · 7 dias contra defeito"
       }
     },
@@ -64,8 +62,7 @@
         "title": "Os 4 que mais saem pra quem mora em apê",
         "subtitle": "Escolhe pela tua dor. Frete grátis acima de R$149.",
         "collection": "pets",
-        "button_label": "Ver tudo",
-        "button_link": "/collections/pets"
+        "button_label": "Ver tudo"
       }
     },
     "ac_why": {
@@ -77,8 +74,7 @@
             "emoji": "🛋️",
             "title": "5 min por dia, 80% menos pelo no sofá",
             "text": "Escova a Vapor + Pente Mágico tiram o subpelo que aspirador não pega. Sem puxar, sem machucar. Gato ronrona, cachorro fica quieto.",
-            "cta_label": "Quero casa sem pelo",
-            "cta_link": "/products/escova-a-vapor"
+            "cta_label": "Quero casa sem pelo"
           }
         },
         "tedio": {
@@ -87,8 +83,7 @@
             "emoji": "😻",
             "title": "Gato sozinho não precisa destruir o sofá",
             "text": "Moinho cansa em ~15 min sem tu precisar. Tapete Gel alivia o calor sem molhar, sem geladeira, sem energia.",
-            "cta_label": "Quero gato tranquilo",
-            "cta_link": "/products/moinho-giratorio"
+            "cta_label": "Quero gato tranquilo"
           }
         }
       },

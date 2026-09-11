@@ -1,5 +1,9 @@
 # CHANGELOG — tema Shopify AuConforto (branch `shopify`)
 
+## v1.1.3 — 2026-09-11
+- Corrige importação na Shopify: remove URLs relativas de schemas/presets/templates `url` (a validação de import derrubava `index.json`, `hero`, `featured`, `why` e `announcement`)
+- Links seguem via fallback no Liquid (mesmos destinos: `/collections/pets`, produtos, rastreio)
+
 ## v1.1.2 — 2026-09-11
 - Pacote `auconforto-dawn-ape-v1.zip` versionado no repo (baixa e sobe direto, sem montar zip local)
 - Restaura `templates/index.json` (homepage 404 no tema publicado)
