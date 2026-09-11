@@ -1,6 +1,8 @@
 # CHANGELOG — tema Shopify AuConforto (branch `shopify`)
 
-## v1.1.1 — 2026-09-11
+## v1.1.2 — 2026-09-11
+- Pacote `auconforto-dawn-ape-v1.zip` versionado no repo (baixa e sobe direto, sem montar zip local)
+- Restaura `templates/index.json` (homepage 404 no tema publicado)
 - Correções pós-upload: galeria do produto (`invalid url input`), relacionados com fallback, featured com fallback `collections.all`, badges/descrições por nome do produto
 - Docs: `BRANCHES.md` + README da `main`; branch `shopify-theme` removida
 
