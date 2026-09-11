@@ -64,11 +64,93 @@
         "collection": "pets",
         "button_label": "Ver tudo"
       }
+    },
+    "ac_why": {
+      "type": "why-it-works",
+      "blocks": {
+        "pelo": {
+          "type": "story",
+          "settings": {
+            "emoji": "🛋️",
+            "title": "5 min por dia, 80% menos pelo no sofá",
+            "text": "Escova a Vapor + Pente Mágico tiram o subpelo que aspirador não pega.",
+            "cta_label": "Quero casa sem pelo"
+          }
+        },
+        "tedio": {
+          "type": "story",
+          "settings": {
+            "emoji": "😻",
+            "title": "Gato sozinho não precisa destruir o sofá",
+            "text": "Moinho cansa em ~15 min. Tapete Gel alivia o calor sem molhar.",
+            "cta_label": "Quero gato tranquilo"
+          }
+        }
+      },
+      "block_order": [
+        "pelo",
+        "tedio"
+      ],
+      "settings": {}
+    },
+    "ac_faq": {
+      "type": "faq-homepage",
+      "blocks": {
+        "q1": {
+          "type": "item",
+          "settings": {
+            "question": "Quando chega?",
+            "answer": "8-15 dias úteis com rastreio. Código em até 48h."
+          }
+        },
+        "q2": {
+          "type": "item",
+          "settings": {
+            "question": "Como é o frete?",
+            "answer": "R$9,90 fixo, grátis acima de R$149."
+          }
+        },
+        "q3": {
+          "type": "item",
+          "settings": {
+            "question": "E se quebrar?",
+            "answer": "7 dias com vídeo = troca."
+          }
+        },
+        "q4": {
+          "type": "item",
+          "settings": {
+            "question": "Pix tem desconto?",
+            "answer": "Sim, 5% OFF no Pix + desconto de boas-vindas por e-mail."
+          }
+        },
+        "q5": {
+          "type": "item",
+          "settings": {
+            "question": "Serve pro meu pet?",
+            "answer": "Pente/Escova: pelo curto/médio. Moinho: gatos. Tapete XS: até 5 kg."
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5"
+      ],
+      "settings": {
+        "title": "Perguntas de quem mora em apê",
+        "subtitle": "Sem enrolação.",
+        "kicker": "Sem enrolação"
+      }
     }
   },
   "order": [
     "ac_hero",
     "ac_trust",
-    "ac_featured"
+    "ac_featured",
+    "ac_why",
+    "ac_faq"
   ]
 }
