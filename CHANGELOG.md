@@ -1,5 +1,9 @@
 # CHANGELOG — tema Shopify AuConforto (branch `shopify`)
 
+## v1.1.1 — 2026-09-11
+- Correções pós-upload: galeria do produto (`invalid url input`), relacionados com fallback, featured com fallback `collections.all`, badges/descrições por nome do produto
+- Docs: `BRANCHES.md` + README da `main`; branch `shopify-theme` removida
+
 ## v1.1.0 — 2026-09-11
 - Anúncio topo com 2 mensagens (sem cupom exposto); anúncio embutido no header (corrige `Liquid error announcement-rotator`)
 - Menu `Início | Produtos | Rastrear Pedido | Ajuda` (sem Loja/Gatos soltos)
