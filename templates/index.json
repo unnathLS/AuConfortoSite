@@ -144,6 +144,14 @@
         "subtitle": "Sem enrolação.",
         "kicker": "Sem enrolação"
       }
+    },
+    "ac_coupon": {
+      "type": "coupon-signup",
+      "settings": {
+        "title": "Ganha 10% OFF na primeira compra",
+        "text": "Deixa teu e-mail e recebe teu desconto de boas-vindas + rastreio sem enrolação.",
+        "button": "Quero meu desconto"
+      }
     }
   },
   "order": [
@@ -151,6 +159,7 @@
     "ac_trust",
     "ac_featured",
     "ac_why",
-    "ac_faq"
+    "ac_faq",
+    "ac_coupon"
   ]
 }
