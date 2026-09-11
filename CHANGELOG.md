@@ -1,5 +1,8 @@
 # CHANGELOG — tema Shopify AuConforto (branch `shopify`)
 
+## v1.1.6 — 2026-09-11
+- Páginas com conteúdo padrão de fallback por `page.handle` (página vazia no admin já mostra texto; conteúdo do admin prevalece quando preenchido)
+
 ## v1.1.5 — 2026-09-11
 - Rotas via objeto `routes` (zero `HardcodedRoutes` no theme-check)
 - Bug real: `payment_button` pra dentro do `form` (antes não renderizava)
