@@ -1,5 +1,8 @@
 # CHANGELOG — tema Shopify AuConforto (branch `shopify`)
 
+## v1.1.7 — 2026-09-11
+- `index.json` reescrito do zero (6 seções, sem URLs no JSON — sobrescreve qualquer corrupção no tema publicado)
+
 ## v1.1.6 — 2026-09-11
 - Páginas com conteúdo padrão de fallback por `page.handle` (página vazia no admin já mostra texto; conteúdo do admin prevalece quando preenchido)
 
