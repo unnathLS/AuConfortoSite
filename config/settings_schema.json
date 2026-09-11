@@ -1,33 +1,30 @@
-{
-  "name": "AuConforto Dawn Apê v1",
-  "settings": [
-    {
-      "name": "Cores AuConforto",
-      "settings": [
-        { "type": "color", "id": "color_page_bg", "label": "Fundo da página", "default": "#f3ede4" },
-        { "type": "color", "id": "color_card_bg", "label": "Fundo dos cards", "default": "#fbf7f1" },
-        { "type": "color", "id": "color_text", "label": "Texto", "default": "#1f1814" },
-        { "type": "color", "id": "color_accent", "label": "Destaque (botões)", "default": "#b54a2a" },
-        { "type": "color", "id": "color_header_bg", "label": "Fundo header/anúncio", "default": "#1f1814" }
-      ]
-    },
-    {
-      "name": "Logo e loja",
-      "settings": [
-        { "type": "text", "id": "logo_text", "label": "Logo texto", "default": "AuConforto" },
-        { "type": "image_picker", "id": "favicon", "label": "Favicon" },
-        { "type": "checkbox", "id": "show_search", "label": "Mostrar busca", "default": true },
-        { "type": "checkbox", "id": "show_account", "label": "Mostrar conta (recomendado OFF)", "default": false },
-        { "type": "select", "id": "cart_type", "label": "Tipo de carrinho", "options": [{ "value": "drawer", "label": "Drawer (recomendado)" }, { "value": "page", "label": "Página" }], "default": "drawer" }
-      ]
-    },
-    {
-      "name": "Frete e garantias (textos)",
-      "settings": [
-        { "type": "text", "id": "ship_note", "label": "Linha frete", "default": "8–15 dias úteis com rastreio · Frete R$9,90 · Grátis +R$149" },
-        { "type": "text", "id": "pix_note", "label": "Linha pagamento", "default": "Pix com 5% OFF + cartão 3x via Mercado Pago" },
-        { "type": "text", "id": "guarantee_note", "label": "Linha garantia", "default": "7 dias contra defeito com vídeo = troca" }
-      ]
-    }
-  ]
-}
+[
+  {
+    "name": "Cores AuConforto",
+    "settings": [
+      { "type": "color", "id": "color_page_bg", "label": "Fundo da página", "default": "#f3ede4" },
+      { "type": "color", "id": "color_card_bg", "label": "Fundo dos cards", "default": "#fbf7f1" },
+      { "type": "color", "id": "color_text", "label": "Texto", "default": "#1f1814" },
+      { "type": "color", "id": "color_accent", "label": "Destaque (botões)", "default": "#b54a2a" },
+      { "type": "color", "id": "color_header_bg", "label": "Fundo header/anúncio", "default": "#1f1814" }
+    ]
+  },
+  {
+    "name": "Logo e loja",
+    "settings": [
+      { "type": "text", "id": "logo_text", "label": "Logo texto", "default": "AuConforto" },
+      { "type": "image_picker", "id": "favicon", "label": "Favicon" },
+      { "type": "checkbox", "id": "show_search", "label": "Busca ON", "default": true },
+      { "type": "checkbox", "id": "show_account", "label": "Conta (deixe OFF)", "default": false },
+      { "type": "select", "id": "cart_type", "label": "Carrinho", "options": [{ "value": "drawer", "label": "Drawer (recomendado)" }, { "value": "page", "label": "Página" }], "default": "drawer" }
+    ]
+  },
+  {
+    "name": "Frete e garantias (textos)",
+    "settings": [
+      { "type": "text", "id": "ship_note", "label": "Linha frete", "default": "8–15 dias úteis com rastreio · Frete R$9,90 · Grátis +R$149" },
+      { "type": "text", "id": "pix_note", "label": "Pix com 5% OFF + cartão 3x via Mercado Pago" },
+      { "type": "text", "id": "guarantee_note", "label": "Garantia", "default": "7 dias contra defeito com vídeo = troca" }
+    ]
+  }
+]

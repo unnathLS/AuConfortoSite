@@ -1,5 +1,9 @@
 # CHANGELOG — tema Shopify AuConforto (branch `shopify`)
 
+## v1.1.4 — 2026-09-11
+- `settings_schema.json` no formato correto (array no topo — a Shopify zerava o arquivo)
+- Merge mantém v1.1.3 (sync tinha trazido de volta arquivos antigos)
+
 ## v1.1.3 — 2026-09-11
 - Corrige importação na Shopify: remove URLs relativas de schemas/presets/templates `url` (a validação de import derrubava `index.json`, `hero`, `featured`, `why` e `announcement`)
 - Links seguem via fallback no Liquid (mesmos destinos: `/collections/pets`, produtos, rastreio)
