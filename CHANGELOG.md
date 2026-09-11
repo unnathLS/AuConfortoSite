@@ -1,5 +1,10 @@
 # CHANGELOG — tema Shopify AuConforto (branch `shopify`)
 
+## v1.1.5 — 2026-09-11
+- Rotas via objeto `routes` (zero `HardcodedRoutes` no theme-check)
+- Bug real: `payment_button` pra dentro do `form` (antes não renderizava)
+- Carrinho com `routes.cart_url`/`cart_change_url`; busca com `routes.search_url`
+
 ## v1.1.4 — 2026-09-11
 - `settings_schema.json` no formato correto (array no topo — a Shopify zerava o arquivo)
 - Merge mantém v1.1.3 (sync tinha trazido de volta arquivos antigos)

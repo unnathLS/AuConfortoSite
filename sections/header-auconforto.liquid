@@ -1,18 +1,18 @@
 {% comment %} Header AuConforto — inclui faixa de anúncio (3 msgs) + logo texto, menu, busca ON, conta OFF, drawer ON {% endcomment %}
 <div class="ac-announcement">
   <div class="ac-announcement__track">
-    <a class="ac-announcement__item" href="/collections/pets">FRETE GRÁTIS ACIMA DE R$149 | PIX COM 5% OFF</a>
-    <a class="ac-announcement__item" href="/collections/pets">8-15 DIAS ÚTEIS COM RASTREIO | IMPOSTO INCLUSO</a>
-    <a class="ac-announcement__item" href="/collections/pets" aria-hidden="true" tabindex="-1">FRETE GRÁTIS ACIMA DE R$149 | PIX COM 5% OFF</a>
-    <a class="ac-announcement__item" href="/collections/pets" aria-hidden="true" tabindex="-1">8-15 DIAS ÚTEIS COM RASTREIO | IMPOSTO INCLUSO</a>
+    <a class="ac-announcement__item" href="{{ routes.collections_url }}/pets">FRETE GRÁTIS ACIMA DE R$149 | PIX COM 5% OFF</a>
+    <a class="ac-announcement__item" href="{{ routes.collections_url }}/pets">8-15 DIAS ÚTEIS COM RASTREIO | IMPOSTO INCLUSO</a>
+    <a class="ac-announcement__item" href="{{ routes.collections_url }}/pets" aria-hidden="true" tabindex="-1">FRETE GRÁTIS ACIMA DE R$149 | PIX COM 5% OFF</a>
+    <a class="ac-announcement__item" href="{{ routes.collections_url }}/pets" aria-hidden="true" tabindex="-1">8-15 DIAS ÚTEIS COM RASTREIO | IMPOSTO INCLUSO</a>
   </div>
 </div>
 <header class="ac-header" {{ section.shopify_attributes }}>
   <div class="ac-header__inner">
-    <a href="/" class="ac-logo">{{ section.settings.logo_text | default: settings.logo_text | default: 'AuConforto' }}</a>
+    <a href="{{ routes.root_url }}" class="ac-logo">{{ section.settings.logo_text | default: settings.logo_text | default: 'AuConforto' }}</a>
     <nav class="ac-nav" aria-label="Principal">
-      <a href="/">Início</a>
-      <a href="/collections/pets">Produtos</a>
+      <a href="{{ routes.root_url }}">Início</a>
+      <a href="{{ routes.collections_url }}/pets">Produtos</a>
       <a href="/pages/rastrear-pedido">Rastrear Pedido</a>
       <a href="/pages/ajuda">Ajuda</a>
     </nav>
@@ -23,11 +23,11 @@
       {% if section.settings.show_account %}
         <a class="ac-icon-btn" href="/account" aria-label="Conta">👤</a>
       {% endif %}
-      <a class="ac-icon-btn" href="/cart" data-open-cart aria-label="Carrinho">🛒<span class="ac-cart-count cart-count-bubble">{{ cart.item_count }}</span></a>
+      <a class="ac-icon-btn" href="{{ routes.cart_url }}" data-open-cart aria-label="Carrinho">🛒<span class="ac-cart-count cart-count-bubble">{{ cart.item_count }}</span></a>
     </div>
   </div>
   <nav class="ac-mobile-nav" aria-label="Mobile">
-    <a href="/">Início</a><a href="/collections/pets">Produtos</a><a href="/pages/rastrear-pedido">Rastrear</a><a href="/pages/ajuda">Ajuda</a>
+    <a href="{{ routes.root_url }}">Início</a><a href="{{ routes.collections_url }}/pets">Produtos</a><a href="/pages/rastrear-pedido">Rastrear</a><a href="/pages/ajuda">Ajuda</a>
   </nav>
 </header>
 {% schema %}

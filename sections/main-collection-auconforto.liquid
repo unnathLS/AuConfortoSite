@@ -3,9 +3,9 @@
   <h1 class="ac-section-title">{{ collection.title | default: section.settings.title }}</h1>
   <p class="ac-section-sub">{{ collection.description | default: section.settings.subtitle }}</p>
   <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin:1rem 0 0">
-    <a class="ac-btn ac-btn--light" style="min-height:42px" href="/collections/pets">Ver tudo</a>
-    <a class="ac-btn ac-btn--light" style="min-height:42px" href="/collections/gatos">🐈 Gatos</a>
-    <a class="ac-btn ac-btn--light" style="min-height:42px" href="/collections/caes">🐕 Cachorros</a>
+    <a class="ac-btn ac-btn--light" style="min-height:42px" href="{{ routes.collections_url }}/pets">Ver tudo</a>
+    <a class="ac-btn ac-btn--light" style="min-height:42px" href="{{ routes.collections_url }}/gatos">🐈 Gatos</a>
+    <a class="ac-btn ac-btn--light" style="min-height:42px" href="{{ routes.collections_url }}/caes">🐕 Cachorros</a>
   </div>
 </div>
 <div class="ac-featured" style="padding-top:0">

@@ -1,7 +1,7 @@
 <footer class="ac-footer" {{ section.shopify_attributes }}>
   <div class="ac-footer__inner">
     <div>
-      <a href="/" class="ac-logo" style="color:#fff">{{ section.settings.brand_title | default: 'AuConforto' }}</a>
+      <a href="{{ routes.root_url }}" class="ac-logo" style="color:#fff">{{ section.settings.brand_title | default: 'AuConforto' }}</a>
       <p style="opacity:.8;font-size:.92rem;max-width:28ch">{{ section.settings.brand_text }}</p>
       <p style="font-size:.85rem;opacity:.8">💳 Pix + cartão 3x · 🚚 rastreio incluso</p>
       {% if section.settings.show_payments %}
@@ -10,7 +10,7 @@
     </div>
     <div>
       <h4>Produtos</h4>
-      <a href="/collections/pets">Todos os produtos</a>
+      <a href="{{ routes.collections_url }}/pets">Todos os produtos</a>
       <a href="/pages/rastrear-pedido">Rastrear pedido</a>
       <a href="/pages/contato">Fale conosco</a>
     </div>
