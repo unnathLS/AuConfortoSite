@@ -28,21 +28,23 @@
         "story_jxz9Xm": {
           "type": "story",
           "settings": {
+            "image": "shopify://shop_images/depois-pelo.jpg",
             "emoji": "🛋️",
             "title": "5 min por dia, 80% menos pelo no sofá",
             "text": "Escova a Vapor + Pente Mágico tiram o subpelo que aspirador não pega. Sem puxar, sem machucar. Gato ronrona, cachorro fica quieto.",
             "cta_label": "Quero casa sem pelo",
-            "cta_link": ""
+            "cta_link": "shopify://products/pente-massageador-magico-anti-pelo-para-caes-e-gatos-tira-pelo-solto-sem-machucar"
           }
         },
         "story_xh9HKC": {
           "type": "story",
           "settings": {
+            "image": "shopify://shop_images/moinho-lifestyle.jpg",
             "emoji": "😻",
             "title": "Gato sozinho não precisa destruir o sofá",
             "text": "Moinho cansa em ~15 min sem tu precisar. Tapete Gel alivia o calor sem molhar, sem geladeira, sem energia.",
             "cta_label": "Quero gato tranquilo",
-            "cta_link": ""
+            "cta_link": "shopify://products/moinho-giratorio-anti-tedio-para-gatos-em-apartamento-brinca-sozinho-e-alivia-o-estresse"
           }
         }
       },
