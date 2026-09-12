@@ -55,7 +55,6 @@
           {% if product.available %}Adicionar ao carrinho{% else %}Esgotado{% endif %}
         </button>
       </div>
-      {{ form | payment_button }}
     {% endform %}
 
     <div class="ac-product__desc">{{ product.description }}</div>
