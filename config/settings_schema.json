@@ -23,7 +23,7 @@
     "name": "Frete e garantias (textos)",
     "settings": [
       { "type": "text", "id": "ship_note", "label": "Linha frete", "default": "8–15 dias úteis com rastreio · Frete R$9,90 · Grátis +R$149" },
-      { "type": "text", "id": "pix_note", "label": "Pix com 5% OFF + cartão 3x via Mercado Pago" },
+      { "type": "text", "id": "pix_note", "label": "Pix + cartão 3x via Mercado Pago" },
       { "type": "text", "id": "guarantee_note", "label": "Garantia", "default": "7 dias contra defeito com vídeo = troca" }
     ]
   }

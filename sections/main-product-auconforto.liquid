@@ -23,7 +23,7 @@
     <p class="ac-section-kicker">AuConforto · feito pra apê</p>
     <h1>{{ product.title }}</h1>
     {% render 'price-auconforto', product: product %}
-    <div class="ac-trustline">💳 Pix com 5% OFF + cartão 3x &nbsp;·&nbsp; 🚚 8–15 dias úteis com rastreio &nbsp;·&nbsp; 🛡️ 7 dias troca com vídeo</div>
+    <div class="ac-trustline">💳 Pix + cartão 3x &nbsp;·&nbsp; 🚚 8–15 dias úteis com rastreio &nbsp;·&nbsp; 🛡️ 7 dias troca com vídeo</div>
 
     {% form 'product', product, id: 'AcAddForm' %}
       <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
@@ -50,7 +50,7 @@
       <details open><summary>Quando chega?</summary><p>8–15 dias úteis com rastreio. Código em até 48h no WhatsApp/e-mail.</p></details>
       <details><summary>Como é o frete?</summary><p>R$9,90 fixo com rastreio, grátis acima de R$149. Imposto incluso.</p></details>
       <details><summary>E se quebrar?</summary><p>7 dias com vídeo = troca ou reembolso. Sem drama.</p></details>
-      <details><summary>Pix tem desconto?</summary><p>Sim, 5% OFF no Pix. Deixa teu e-mail na newsletter que a gente manda um desconto de boas-vindas.</p></details>
+      <details><summary>Quais as formas de pagamento?</summary><p>Pix e cartão de crédito em até 3x via Mercado Pago. Sem boleto.</p></details>
       <details><summary>Serve pro meu pet?</summary><p>{% if product.handle contains 'moinho' %}Feito pra gatos — filhotes e adultos em apê.{% elsif product.handle contains 'tapete' %}Feito pra pets até 5 kg (XS 40x30) — gatos e cachorrinhos em apê quente.{% else %}Feito pra cães e gatos de pelo curto/médio em apê.{% endif %}</p></details>
     </div>
   </div>
@@ -85,7 +85,7 @@
   "name": "AC Produto",
   "tag": "section",
   "settings": [
-    { "type": "text", "id": "related_handles", "label": "Handles relacionados (vírgula)", "default": "escova-a-vapor,pente-magico,moinho-giratorio,tapete-gel-xs" }
+    { "type": "text", "id": "related_handles", "label": "Handles relacionados (vírgula)", "default": "escova-a-vapor-anti-pelo-caes-gatos,pente-massageador-magico-anti-pelo-para-caes-e-gatos-tira-pelo-solto-sem-machucar,moinho-giratorio-anti-tedio-para-gatos,tapete-gel-refrescante-xs-40x30" }
   ],
   "presets": [{ "name": "AC Produto" }]
 }

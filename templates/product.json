@@ -1,6 +1,13 @@
 {
   "sections": {
-    "main": { "type": "main-product-auconforto", "settings": { "related_handles": "escova-a-vapor,pente-magico,moinho-giratorio,tapete-gel-xs" } }
+    "main": {
+      "type": "main-product-auconforto",
+      "settings": {
+        "related_handles": "escova-a-vapor-anti-pelo-caes-gatos,pente-massageador-magico-anti-pelo-para-caes-e-gatos-tira-pelo-solto-sem-machucar,moinho-giratorio-anti-tedio-para-gatos,tapete-gel-refrescante-xs-40x30"
+      }
+    }
   },
-  "order": ["main"]
+  "order": [
+    "main"
+  ]
 }
