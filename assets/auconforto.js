@@ -68,7 +68,7 @@
   $$('.ac-thumbs img').forEach(t => t.addEventListener('click', () => {
     $$('.ac-thumbs img').forEach(x => x.classList.remove('active'));
     t.classList.add('active');
-    const main = $('#AcMainImg'); if (main) main.src = t.dataset.full || t.src;
+    const main = $('#AcMainImg'); if (main) { main.removeAttribute('srcset'); main.src = t.dataset.full || t.src; }
   }));
 
   // Qty

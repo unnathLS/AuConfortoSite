@@ -132,7 +132,7 @@ a{color:inherit}
 .ac-thumbs img{width:72px;height:72px;object-fit:cover;border-radius:10px;border:2px solid transparent;cursor:pointer}
 .ac-thumbs img.active{border-color:var(--ac-primary)}
 .ac-product__info{position:relative;z-index:1;min-width:0}.ac-product__info h1{margin:.4rem 0 .6rem;font-size:clamp(1.6rem,3vw,2.2rem);line-height:1.2;overflow-wrap:break-word}
-.ac-product__desc{color:var(--ac-muted)}
+body{overflow-x:clip}.ac-product{overflow:clip}.ac-product__desc{color:var(--ac-muted);max-width:100%;overflow-wrap:anywhere}.ac-product__desc img,.ac-product__desc iframe{max-width:100%;height:auto}.ac-product__desc table{max-width:100%;display:block;overflow-x:auto}
 .ac-trustline{background:#fff;border:1px dashed var(--ac-border);border-radius:12px;padding:.8rem 1rem;font-size:.88rem;margin:1rem 0}
 .ac-buy{display:flex;gap:.6rem;flex-wrap:wrap;margin:1rem 0}
 .ac-qty{display:flex;align-items:center;border:1px solid var(--ac-border);border-radius:10px;background:#fff}

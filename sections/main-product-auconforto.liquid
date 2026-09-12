@@ -18,6 +18,20 @@
       </div>
     {% endif %}
   </div>
+<script>
+(function(){
+  var sec = document.currentScript.closest('.ac-product');
+  if(!sec) return;
+  var main = sec.querySelector('#AcMainImg');
+  sec.querySelectorAll('.ac-thumbs img').forEach(function(t){
+    t.addEventListener('click', function(){
+      sec.querySelectorAll('.ac-thumbs img').forEach(function(x){x.classList.remove('active');});
+      t.classList.add('active');
+      if(main){ main.removeAttribute('srcset'); main.src = t.getAttribute('data-full') || t.src; }
+    });
+  });
+})();
+</script>
 
   <div class="ac-product__info">
     <p class="ac-section-kicker">AuConforto · feito pra apê</p>
@@ -26,7 +40,7 @@
     <div class="ac-trustline">💳 Pix + cartão 3x &nbsp;·&nbsp; 🚚 8–15 dias úteis com rastreio &nbsp;·&nbsp; 🛡️ 7 dias troca com vídeo</div>
 
     {% form 'product', product, id: 'AcAddForm' %}
-      <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+      {% if product.variants.size == 1 %}<input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">{% endif %}
       {% if product.variants.size > 1 %}
         <label for="AcVariant" style="font-weight:700;font-size:.9rem">Cor / modelo</label>
         <select id="AcVariant" name="id" style="width:100%;min-height:48px;border-radius:10px;border:1px solid var(--ac-border);padding:0 1rem;margin:.4rem 0 1rem">
