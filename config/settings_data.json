@@ -19,7 +19,7 @@
     "show_account": false,
     "cart_type": "drawer",
     "ship_note": "8–15 dias úteis com rastreio · Frete R$9,90 · Grátis +R$149",
-    "pix_note": "Pix com 5% OFF + cartão 3x via Mercado Pago",
+    "pix_note": "Pix com 5% OFF + cartão 3x sem juros via Mercado Pago",
     "guarantee_note": "7 dias contra defeito com vídeo = troca",
     "sections": {
       "header-auconforto": {
@@ -36,7 +36,7 @@
         "type": "footer-auconforto",
         "settings": {
           "brand_title": "AuConforto",
-          "brand_text": "Conforto pra pets em apartamento. Pix + cartão 3x, rastreio incluso, sem drama.",
+          "brand_text": "Conforto pra pets em apartamento. Pix + cartão 3x sem juros, rastreio incluso, sem drama.",
           "show_payments": true
         }
       }
@@ -69,7 +69,7 @@
       "show_account": false,
       "cart_type": "drawer",
       "ship_note": "8–15 dias úteis com rastreio · Frete R$9,90 · Grátis +R$149",
-      "pix_note": "Pix + cartão 3x via Mercado Pago",
+      "pix_note": "Pix + cartão 3x sem juros via Mercado Pago",
       "guarantee_note": "7 dias contra defeito com vídeo = troca",
       "sections": {
         "header-auconforto": {
@@ -85,7 +85,7 @@
         "footer-auconforto": {
           "type": "footer-auconforto",
           "settings": {
-            "brand_text": "Conforto pra pets em apartamento. Pix + cartão 3x, rastreio incluso, sem drama.",
+            "brand_text": "Conforto pra pets em apartamento. Pix + cartão 3x sem juros, rastreio incluso, sem drama.",
             "show_payments": true
           }
         }
