@@ -1,5 +1,62 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-  "current": "AuConforto padrão",
+  "current": {
+    "color_page_bg": "#f3ede4",
+    "color_card_bg": "#fbf7f1",
+    "color_text": "#1f1814",
+    "color_accent": "#b54a2a",
+    "color_header_bg": "#1f1814",
+    "logo_text": "AuConforto",
+    "show_search": true,
+    "show_account": false,
+    "cart_type": "drawer",
+    "ship_note": "8–15 dias úteis com rastreio · Frete R$9,90 · Grátis +R$149",
+    "pix_note": "Pix + cartão 3x via Mercado Pago",
+    "guarantee_note": "7 dias contra defeito com vídeo = troca",
+    "sections": {
+      "header-auconforto": {
+        "type": "header-auconforto",
+        "settings": {
+          "logo_text": "AuConforto",
+          "menu": "main-menu",
+          "show_search": true,
+          "show_account": false,
+          "cart_type": "drawer"
+        }
+      },
+      "footer-auconforto": {
+        "type": "footer-auconforto",
+        "settings": {
+          "brand_title": "AuConforto",
+          "brand_text": "Conforto pra pets em apartamento. Pix + cartão 3x, rastreio incluso, sem drama.",
+          "show_payments": true
+        }
+      }
+    },
+    "content_for_index": [],
+    "blocks": {
+      "15188581332139481108": {
+        "type": "shopify://apps/scala-discounts/blocks/cartButton/24748891-1ee0-454d-bfde-d80e65983c18",
+        "disabled": false,
+        "settings": {
+          "textSelector": "Finalizar a compra",
+          "textSelector2": "finalizar compra, Check out, checkout, check-out",
+          "selector": ":is(button,input)[name=\"checkout\"]",
+          "message": "Pix com desconto",
+          "position": "before",
+          "customliquid": "{% comment %}\n<style>\nbutton { \n background: #000000;\n}\n</style>\n{% endcomment %}\n\n{% # delete the comment to apply, styles here apply to the app button only %}"
+        }
+      }
+    }
+  },
   "presets": {
     "AuConforto padrão": {
       "color_page_bg": "#f3ede4",
@@ -17,7 +74,13 @@
       "sections": {
         "header-auconforto": {
           "type": "header-auconforto",
-          "settings": { "logo_text": "AuConforto", "menu": "main-menu", "show_search": true, "show_account": false, "cart_type": "drawer" }
+          "settings": {
+            "logo_text": "AuConforto",
+            "menu": "main-menu",
+            "show_search": true,
+            "show_account": false,
+            "cart_type": "drawer"
+          }
         },
         "footer-auconforto": {
           "type": "footer-auconforto",
