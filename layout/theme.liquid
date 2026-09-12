@@ -14,9 +14,12 @@
 
   {%- if settings.favicon != blank -%}
     <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32 }}">
+  {%- else -%}
+    <link rel="icon" type="image/png" href="{{ 'favicon.png' | asset_url }}">
+    <link rel="apple-touch-icon" href="{{ 'apple-touch-icon.png' | asset_url }}">
   {%- endif -%}
 
-  <title>{{ page_title }}{% if current_tags %} &ndash; {{ current_tags | join: ', ' }}{% endif %}{% if current_page != 1 %} &ndash; Página {{ current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}</title>
+  <title>AuConforto{% if page_title != blank and page_title != shop.name %} &middot; {{ page_title }}{% endif %}{% if current_tags %} &ndash; {{ current_tags | join: ', ' }}{% endif %}{% if current_page != 1 %} &ndash; Página {{ current_page }}{% endif %}</title>
   {% if page_description %}<meta name="description" content="{{ page_description | escape }}">{% endif %}
 
   {{ content_for_header }}
