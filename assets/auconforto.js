@@ -35,6 +35,7 @@
     finally { if (btn) { btn.disabled = false; btn.textContent = old; } }
   });
 
+  const fmtBRL = (c) => (c / 100).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
   async function updateDrawer(cart) {
     cart = cart || await fetch('/cart.js').then(r => r.json());
     const countEls = $$('.ac-cart-count');
@@ -44,60 +45,34 @@
     if (!cart.items.length) {
       body.innerHTML = `<p>${window.AcStrings?.empty || 'Carrinho vazio.'}</p><p><a class="ac-btn ac-btn--primary" href="/collections/pets">Ver os 4 mais vendidos</a></p>`;
     } else {
-      body.innerHTML = cart.items.map(i => `
-        <div style="display:flex;gap:.8rem;margin-bottom:1rem">
-          <img src="${i.image}" alt="" style="width:64px;height:64px;object-fit:cover;border-radius:10px">
-          <div style="flex:1"><strong style="font-size:.92rem">${i.product_title}</strong><br><small>${i.variant_title || ''}</small><select data-variants-for="${i.handle}" data-line="${cart.items.indexOf(i)+1}" data-current="${i.variant_id}" data-qty="${i.quantity}" aria-label="Trocar cor ou modelo" style="max-width:100%;min-height:38px;border-radius:8px;border:1px solid var(--ac-border);background:#fff;padding:0 .5rem;margin:.25rem 0;font-size:.85rem"><option>Cor/modelo…</option></select><br><span style="display:inline-flex;align-items:center;gap:.55rem;margin:.25rem 0"><button type="button" data-dec="${cart.items.indexOf(i)+1}" data-qty="${i.quantity}" aria-label="Diminuir" style="width:30px;height:30px;border-radius:8px;border:1px solid var(--ac-border);background:#fff;font-size:1rem;cursor:pointer">−</button><strong>${i.quantity}</strong><button type="button" data-inc="${cart.items.indexOf(i)+1}" data-qty="${i.quantity}" aria-label="Aumentar" style="width:30px;height:30px;border-radius:8px;border:1px solid var(--ac-border);background:#fff;font-size:1rem;cursor:pointer">+</button></span><br><strong>${(i.final_line_price/100).toLocaleString('pt-BR',{style:'currency',currency:'BRL'})}</strong></div>
-          <a href="/cart/change?line=${cart.items.indexOf(i)+1}&quantity=0" style="font-size:.8rem">remover</a>
-        </div>`).join('');
-    }
-    // Seletor de cor/modelo por linha
-    try {
       const cache = updateDrawer._pcache || (updateDrawer._pcache = {});
-      const sels = [...body.querySelectorAll('select[data-variants-for]')];
-      const handles = [...new Set(sels.map(s => s.dataset.variantsFor).filter(Boolean))];
+      const handles = [...new Set(cart.items.map(i => i.handle).filter(Boolean))];
       await Promise.all(handles.map(async (h) => {
         if (!cache[h]) cache[h] = fetch(`/products/${h}.js`).then(r => (r.ok ? r.json() : null)).catch(() => null);
-        const prod = await cache[h];
-        sels.filter(s => s.dataset.variantsFor === h).forEach(s => {
-          if (!prod || !prod.variants || prod.variants.length < 2) { s.remove(); return; }
-          s.innerHTML = prod.variants.map(v => `<option value="${v.id}"${String(v.id) === String(s.dataset.current) ? ' selected' : ''}>${v.title} — ${(v.price / 100).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</option>`).join('');
-          s.onchange = async () => {
-            const qty = +s.dataset.qty || 1;
-            try {
-              await fetch('/cart/change.js', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ line: +s.dataset.line, quantity: 0 }) });
-              await fetch('/cart/add.js', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ items: [{ id: +s.value, quantity: qty }] }) });
-              updateDrawer(await fetch('/cart.js').then(r => r.json()));
-            } catch (err) { updateDrawer(); }
-          };
-        });
+        await cache[h];
       }));
-    } catch (err) {}
-    // Combinar: levar outra cor sem sair da gaveta
-    try {
-      const have = new Set(cart.items.map(x => String(x.variant_id)));
-      const cache2 = updateDrawer._pcache || {};
-      const rows = [];
-      for (const h of Object.keys(cache2)) {
-        const prod = cache2[h];
-        if (!prod || !prod.variants || prod.variants.length < 2) continue;
-        const missing = prod.variants.filter(v => !have.has(String(v.id)) && v.available !== false);
-        missing.forEach(v => rows.push({ id: v.id, title: v.title, handle: h }));
-      }
-      let more = body.querySelector('#AcMoreColors');
-      if (rows.length) {
-        if (!more) { more = document.createElement('div'); more.id = 'AcMoreColors'; body.appendChild(more); }
-        more.innerHTML = `<p style="font-weight:700;font-size:.88rem;margin:.6rem 0 .4rem">Combinar com outra cor</p>` + rows.map(r =>
-          `<button type="button" data-addcolor="${r.id}" style="display:flex;width:100%;align-items:center;justify-content:space-between;gap:.6rem;background:#fff;border:1px solid var(--ac-border);border-radius:10px;padding:.5rem .7rem;margin-bottom:.4rem;cursor:pointer;font-size:.85rem"><span>+ ${r.title}</span><span>Adicionar</span></button>`
-        ).join('');
-        more.querySelectorAll('[data-addcolor]').forEach(b => b.onclick = async () => {
-          try {
-            await fetch('/cart/add.js', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ items: [{ id: +b.dataset.addcolor, quantity: 1 }] }) });
-            updateDrawer(await fetch('/cart.js').then(r => r.json()));
-          } catch (err) {}
-        });
-      } else if (more) more.remove();
-    } catch (err) {}
+      const byLine = {};
+      cart.items.forEach((i, idx) => { byLine[String(i.variant_id)] = { line: idx + 1, qty: i.quantity }; });
+      body.innerHTML = handles.map(h => {
+        const lines = cart.items.filter(i => i.handle === h);
+        const first = lines[0];
+        const prod = cache[h];
+        const variants = (prod && prod.variants && prod.variants.length) ? prod.variants : lines.map(i => ({ id: i.variant_id, title: i.variant_title || i.title, price: i.price, available: true }));
+        const rows = variants.map(v => {
+          const hit = byLine[String(v.id)];
+          const q = hit ? hit.qty : 0;
+          const line = hit ? hit.line : 0;
+          return `<div style="display:flex;align-items:center;gap:.6rem;margin-top:.45rem">`
+            + `<span style="flex:1;min-width:0;font-size:.88rem">${v.title} — <strong>${fmtBRL(v.price)}</strong></span>`
+            + `<span style="display:inline-flex;align-items:center;gap:.5rem"><button type="button" data-cdec="${line}" data-vid="${v.id}" data-qty="${q}" aria-label="Diminuir" style="width:30px;height:30px;border-radius:8px;border:1px solid var(--ac-border);background:#fff;font-size:1rem;cursor:pointer">−</button><strong style="min-width:1.2em;text-align:center">${q}</strong><button type="button" data-cinc="${line}" data-vid="${v.id}" data-qty="${q}" aria-label="Aumentar" style="width:30px;height:30px;border-radius:8px;border:1px solid var(--ac-border);background:#fff;font-size:1rem;cursor:pointer">+</button></span>`
+            + (hit ? `<a href="/cart/change?line=${line}&quantity=0" style="font-size:.78rem">remover</a>` : ``)
+            + `</div>`;
+        }).join('');
+        return `<div style="margin-bottom:1.1rem"><div style="display:flex;gap:.8rem;align-items:center">`
+          + `<img src="${first.image}" alt="" style="width:64px;height:64px;object-fit:cover;border-radius:10px">`
+          + `<strong style="font-size:.92rem;flex:1">${first.product_title}</strong></div>${rows}</div>`;
+      }).join('');
+    }
     // Barra frete grátis R$149
     const bar = $('#AcFreeBar'), msg = $('#AcFreeMsg');
     if (bar && msg) {
@@ -110,18 +85,27 @@
     if (totalEl) totalEl.textContent = (cart.total_price/100).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
   }
   fetch('/cart.js').then(r=>r.json()).then(updateDrawer).catch(()=>{});
-  // Stepper drawer: +1 / -1 sem sair do carrinho
+  // Stepper por cor: + soma (cria a linha se era 0), - diminui (zera e some)
   document.addEventListener('click', async (e) => {
-    const btn = e.target.closest('[data-inc],[data-dec]');
+    const btn = e.target.closest('[data-cinc],[data-cdec]');
     if (!btn || !btn.closest('#AcCartItems')) return;
-    const line = +(btn.dataset.inc || btn.dataset.dec);
-    const qty = +btn.dataset.qty;
-    const quantity = btn.hasAttribute('data-inc') ? qty + 1 : Math.max(0, qty - 1);
-    const box = $('#AcCartItems');
+    const line = +btn.dataset.cinc || +btn.dataset.cdec || 0;
+    const vid = +btn.dataset.vid;
+    const qty = +btn.dataset.qty || 0;
     try {
-      const cart = await fetch('/cart/change.js', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ line, quantity }) }).then(r => r.json());
-      updateDrawer(cart);
-    } catch (err) { if (box) box.style.opacity = 1; }
+      if (btn.hasAttribute('data-cinc')) {
+        if (line > 0) {
+          updateDrawer(await fetch('/cart/change.js', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ line, quantity: qty + 1 }) }).then(r => r.json()));
+        } else {
+          await fetch('/cart/add.js', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ items: [{ id: vid, quantity: 1 }] }) });
+          updateDrawer(await fetch('/cart.js').then(r => r.json()));
+        }
+      } else {
+        if (line > 0) {
+          updateDrawer(await fetch('/cart/change.js', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ line, quantity: Math.max(0, qty - 1) }) }).then(r => r.json()));
+        }
+      }
+    } catch (err) {}
   });
 
   // Galeria produto
