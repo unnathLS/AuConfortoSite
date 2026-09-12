@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "ac_hero": {
@@ -7,54 +16,99 @@
         "title": "Apartamento com pet não precisa viver com pelo, calor e tédio",
         "subtitle": "4 soluções testadas pra cães e gatos em apê. Pix com desconto, rastreio incluso, 7 dias de garantia.",
         "btn1_label": "Ver os 4 mais vendidos",
+        "btn1_link": "",
         "btn2_label": "Rastrear meu pedido",
+        "btn2_link": "",
         "pills": "Pix com desconto · 8–15 dias úteis com rastreio · 7 dias contra defeito"
       }
     },
-    "ac_trust": {
-      "type": "trust-bar",
-      "blocks": {
-        "t1": { "type": "item", "settings": { "icon": "🚚", "title": "Rastreio incluso", "text": "Código em até 48h no WhatsApp/e-mail" } },
-        "t2": { "type": "item", "settings": { "icon": "💳", "title": "Pix + cartão 3x", "text": "Via Mercado Pago, boleto OFF" } },
-        "t3": { "type": "item", "settings": { "icon": "🛡️", "title": "7 dias de garantia", "text": "Vídeo do defeito = troca" } },
-        "t4": { "type": "item", "settings": { "icon": "🏠", "title": "Feito pra apê", "text": "Testado em gato/cão de apartamento" } }
-      },
-      "block_order": ["t1", "t2", "t3", "t4"],
-      "settings": {}
-    },
-    "ac_featured": {
-      "type": "featured-pets",
-      "settings": {
-        "kicker": "Os queridinhos",
-        "title": "Os 4 que mais saem pra quem mora em apê",
-        "subtitle": "Escolhe pela tua dor. Frete grátis acima de R$149.",
-        "collection": "pets",
-        "button_label": "Ver tudo"
-      }
-    },
-    "ac_why": {
+    "why_it_works_aQmjQg": {
       "type": "why-it-works",
       "blocks": {
-        "pelo": { "type": "story", "settings": { "emoji": "🛋️", "title": "5 min por dia, 80% menos pelo no sofá", "text": "Escova a Vapor + Pente Mágico tiram o subpelo que aspirador não pega. Sem puxar, sem machucar.", "cta_label": "Quero casa sem pelo" } },
-        "tedio": { "type": "story", "settings": { "emoji": "😻", "title": "Gato sozinho não precisa destruir o sofá", "text": "Moinho cansa em ~15 min sem tu precisar. Tapete Gel alivia o calor sem molhar.", "cta_label": "Quero gato tranquilo" } }
+        "story_jxz9Xm": {
+          "type": "story",
+          "settings": {
+            "emoji": "🛋️",
+            "title": "5 min por dia, 80% menos pelo no sofá",
+            "text": "Escova a Vapor + Pente Mágico tiram o subpelo que aspirador não pega. Sem puxar, sem machucar. Gato ronrona, cachorro fica quieto.",
+            "cta_label": "Quero casa sem pelo",
+            "cta_link": ""
+          }
+        },
+        "story_xh9HKC": {
+          "type": "story",
+          "settings": {
+            "emoji": "😻",
+            "title": "Gato sozinho não precisa destruir o sofá",
+            "text": "Moinho cansa em ~15 min sem tu precisar. Tapete Gel alivia o calor sem molhar, sem geladeira, sem energia.",
+            "cta_label": "Quero gato tranquilo",
+            "cta_link": ""
+          }
+        }
       },
-      "block_order": ["pelo", "tedio"],
+      "block_order": [
+        "story_jxz9Xm",
+        "story_xh9HKC"
+      ],
+      "name": "AC Por que funciona",
       "settings": {}
     },
-    "ac_faq": {
+    "faq_homepage_MpRzpH": {
       "type": "faq-homepage",
       "blocks": {
-        "q1": { "type": "item", "settings": { "question": "Quando chega?", "answer": "8-15 dias úteis com rastreio. Código em até 48h." } },
-        "q2": { "type": "item", "settings": { "question": "Como é o frete?", "answer": "R$9,90 fixo com rastreio, grátis acima de R$149. Imposto incluso." } },
-        "q3": { "type": "item", "settings": { "question": "E se quebrar?", "answer": "7 dias com vídeo = troca ou reembolso." } },
-        "q4": { "type": "item", "settings": { "question": "Pix tem desconto?", "answer": "Sim, 5% OFF no Pix. Deixa teu e-mail na newsletter que a gente manda um desconto de boas-vindas." } },
-        "q5": { "type": "item", "settings": { "question": "Serve pro meu pet?", "answer": "Pente/Escova: pelo curto/médio. Moinho: gatos. Tapete XS: até 5 kg." } }
+        "item_x7axTC": {
+          "type": "item",
+          "settings": {
+            "question": "Quando chega?",
+            "answer": "8-15 dias úteis com rastreio. Tu recebe o código em até 48h no WhatsApp/e-mail após o pagamento aprovar."
+          }
+        },
+        "item_8PC8LW": {
+          "type": "item",
+          "settings": {
+            "question": "Como é o frete?",
+            "answer": "R$9,90 fixo com rastreio. Grátis acima de R$149 automático no checkout. Imposto incluso, sem taxa extra."
+          }
+        },
+        "item_hNDpjb": {
+          "type": "item",
+          "settings": {
+            "question": "E se quebrar?",
+            "answer": "7 dias contra defeito: manda vídeo que a gente troca ou reembolsa. Sem burocracia, sem drama."
+          }
+        },
+        "item_4VEiNX": {
+          "type": "item",
+          "settings": {
+            "question": "Pix tem desconto?",
+            "answer": "Sim, 5% OFF no Pix. Deixa teu e-mail na newsletter que a gente manda um desconto de boas-vindas. Cartão em até 3x via Mercado Pago."
+          }
+        },
+        "item_9Care4": {
+          "type": "item",
+          "settings": {
+            "question": "Serve pro meu pet?",
+            "answer": "Pente e Escova: cães e gatos de pelo curto/médio. Moinho: gatos. Tapete XS 40x30: pets até 5 kg. Mora em apê? Foi feito pra ti."
+          }
+        }
       },
-      "block_order": ["q1", "q2", "q3", "q4", "q5"],
-      "settings": { "title": "Perguntas de quem mora em apê", "subtitle": "Sem enrolação.", "kicker": "Sem enrolação" }
+      "block_order": [
+        "item_x7axTC",
+        "item_8PC8LW",
+        "item_hNDpjb",
+        "item_4VEiNX",
+        "item_9Care4"
+      ],
+      "name": "AC FAQ",
+      "settings": {
+        "title": "Perguntas de quem mora em apê",
+        "subtitle": "As 5 que mais chegam no suporte.",
+        "kicker": "Sem enrolação"
+      }
     },
-    "ac_coupon": {
+    "coupon_signup_YYx6Uj": {
       "type": "coupon-signup",
+      "name": "AC Cupom",
       "settings": {
         "title": "Ganha 10% OFF na primeira compra",
         "text": "Deixa teu e-mail e recebe teu desconto de boas-vindas + rastreio sem enrolação.",
@@ -62,5 +116,10 @@
       }
     }
   },
-  "order": ["ac_hero", "ac_trust", "ac_featured", "ac_why", "ac_faq", "ac_coupon"]
+  "order": [
+    "ac_hero",
+    "why_it_works_aQmjQg",
+    "faq_homepage_MpRzpH",
+    "coupon_signup_YYx6Uj"
+  ]
 }
