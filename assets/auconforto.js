@@ -47,7 +47,7 @@
       body.innerHTML = cart.items.map(i => `
         <div style="display:flex;gap:.8rem;margin-bottom:1rem">
           <img src="${i.image}" alt="" style="width:64px;height:64px;object-fit:cover;border-radius:10px">
-          <div style="flex:1"><strong style="font-size:.92rem">${i.product_title}</strong><br><small>${i.variant_title || ''} · Qtd ${i.quantity}</small><br><strong>${(i.final_line_price/100).toLocaleString('pt-BR',{style:'currency',currency:'BRL'})}</strong></div>
+          <div style="flex:1"><strong style="font-size:.92rem">${i.product_title}</strong><br><small>${i.variant_title || ''}</small><br><span style="display:inline-flex;align-items:center;gap:.55rem;margin:.25rem 0"><button type="button" data-dec="${cart.items.indexOf(i)+1}" data-qty="${i.quantity}" aria-label="Diminuir" style="width:30px;height:30px;border-radius:8px;border:1px solid var(--ac-border);background:#fff;font-size:1rem;cursor:pointer">−</button><strong>${i.quantity}</strong><button type="button" data-inc="${cart.items.indexOf(i)+1}" data-qty="${i.quantity}" aria-label="Aumentar" style="width:30px;height:30px;border-radius:8px;border:1px solid var(--ac-border);background:#fff;font-size:1rem;cursor:pointer">+</button></span><br><strong>${(i.final_line_price/100).toLocaleString('pt-BR',{style:'currency',currency:'BRL'})}</strong></div>
           <a href="/cart/change?line=${cart.items.indexOf(i)+1}&quantity=0" style="font-size:.8rem">remover</a>
         </div>`).join('');
     }
@@ -63,6 +63,19 @@
     if (totalEl) totalEl.textContent = (cart.total_price/100).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
   }
   fetch('/cart.js').then(r=>r.json()).then(updateDrawer).catch(()=>{});
+  // Stepper drawer: +1 / -1 sem sair do carrinho
+  document.addEventListener('click', async (e) => {
+    const btn = e.target.closest('[data-inc],[data-dec]');
+    if (!btn || !btn.closest('#AcCartItems')) return;
+    const line = +(btn.dataset.inc || btn.dataset.dec);
+    const qty = +btn.dataset.qty;
+    const quantity = btn.hasAttribute('data-inc') ? qty + 1 : Math.max(0, qty - 1);
+    const box = $('#AcCartItems');
+    try {
+      const cart = await fetch('/cart/change.js', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ line, quantity }) }).then(r => r.json());
+      updateDrawer(cart);
+    } catch (err) { if (box) box.style.opacity = 1; }
+  });
 
   // Galeria produto
   $$('.ac-thumbs img').forEach(t => t.addEventListener('click', () => {

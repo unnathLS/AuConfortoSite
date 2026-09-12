@@ -8,7 +8,7 @@
       {% for item in cart.items %}
         <div style="display:flex;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--ac-border)">
           <img src="{{ item.image | image_url: width: 160 }}" alt="" style="width:80px;height:80px;object-fit:cover;border-radius:10px">
-          <div style="flex:1"><strong>{{ item.product.title }}</strong><br><small>{{ item.variant.title }} · {{ item.quantity }}x</small><br><strong>{{ item.final_line_price | money }}</strong></div>
+          <div style="flex:1"><strong>{{ item.product.title }}</strong><br><small>{{ item.variant.title }}</small><br><span style="display:inline-flex;align-items:center;gap:.55rem;margin:.25rem 0"><a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity={{ item.quantity | minus: 1 }}" aria-label="Diminuir" style="width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;border:1px solid var(--ac-border);background:#fff;text-decoration:none">−</a><strong>{{ item.quantity }}</strong><a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity={{ item.quantity | plus: 1 }}" aria-label="Aumentar" style="width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;border:1px solid var(--ac-border);background:#fff;text-decoration:none">+</a></span><br><strong>{{ item.final_line_price | money }}</strong></div>
           <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity=0">remover</a>
         </div>
       {% endfor %}
