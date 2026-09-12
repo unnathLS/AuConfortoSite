@@ -14,12 +14,12 @@
       "settings": {
         "kicker": "AuConforto · pets em apartamento",
         "title": "Apartamento com pet não precisa viver com pelo, calor e tédio",
-        "subtitle": "4 soluções testadas pra cães e gatos em apê. Pix com desconto, rastreio incluso, 7 dias de garantia.",
+        "subtitle": "4 soluções testadas pra cães e gatos em apê. Pix com 5% OFF, rastreio incluso, 7 dias de garantia.",
         "btn1_label": "Ver os 4 mais vendidos",
         "btn1_link": "",
         "btn2_label": "Rastrear meu pedido",
         "btn2_link": "",
-        "pills": "Pix com desconto · 8–15 dias úteis com rastreio · 7 dias contra defeito"
+        "pills": "Pix com 5% OFF · 8–15 dias úteis com rastreio · 7 dias contra defeito"
       }
     },
     "why_it_works_aQmjQg": {
@@ -83,7 +83,7 @@
           "type": "item",
           "settings": {
             "question": "Pix tem desconto?",
-            "answer": "Sim, Pix sem desconto no momento da validação. Deixa teu e-mail na newsletter que a gente manda um desconto de boas-vindas. Cartão em até 3x via Mercado Pago."
+            "answer": "Sim, 5% OFF no Pix pelo botão do carrinho. Cartão em até 3x via Mercado Pago."
           }
         },
         "item_9Care4": {
@@ -107,21 +107,11 @@
         "subtitle": "As 5 que mais chegam no suporte.",
         "kicker": "Sem enrolação"
       }
-    },
-    "coupon_signup_YYx6Uj": {
-      "type": "coupon-signup",
-      "name": "AC Cupom",
-      "settings": {
-        "title": "Ganha 10% OFF na primeira compra",
-        "text": "Deixa teu e-mail e recebe teu desconto de boas-vindas + rastreio sem enrolação.",
-        "button": "Quero meu desconto"
-      }
     }
   },
   "order": [
     "ac_hero",
     "why_it_works_aQmjQg",
-    "faq_homepage_MpRzpH",
-    "coupon_signup_YYx6Uj"
+    "faq_homepage_MpRzpH"
   ]
 }

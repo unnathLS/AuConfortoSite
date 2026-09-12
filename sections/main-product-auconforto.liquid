@@ -37,7 +37,7 @@
     <p class="ac-section-kicker">AuConforto · feito pra apê</p>
     <h1>{{ product.title }}</h1>
     {% render 'price-auconforto', product: product %}
-    <div class="ac-trustline">💳 Pix + cartão 3x &nbsp;·&nbsp; 🚚 8–15 dias úteis com rastreio &nbsp;·&nbsp; 🛡️ 7 dias troca com vídeo</div>
+    <div class="ac-trustline">💳 Pix com 5% OFF + cartão 3x &nbsp;·&nbsp; 🚚 8–15 dias úteis com rastreio &nbsp;·&nbsp; 🛡️ 7 dias troca com vídeo</div>
 
     {% form 'product', product, id: 'AcAddForm' %}
       {% if product.variants.size == 1 %}<input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">{% endif %}

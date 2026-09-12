@@ -4,3 +4,5 @@
     <s class="ac-price__was">{{ product.compare_at_price | money }}</s>
   {% endif %}
 </div>
+{% assign pix = product.price | times: 0.95 %}
+<p class="ac-price__pix" style="margin:.3rem 0 0">💚 {{ pix | money }} no Pix (5% OFF)</p>
