@@ -73,6 +73,31 @@
         });
       }));
     } catch (err) {}
+    // Combinar: levar outra cor sem sair da gaveta
+    try {
+      const have = new Set(cart.items.map(x => String(x.variant_id)));
+      const cache2 = updateDrawer._pcache || {};
+      const rows = [];
+      for (const h of Object.keys(cache2)) {
+        const prod = cache2[h];
+        if (!prod || !prod.variants || prod.variants.length < 2) continue;
+        const missing = prod.variants.filter(v => !have.has(String(v.id)) && v.available !== false);
+        missing.forEach(v => rows.push({ id: v.id, title: v.title, handle: h }));
+      }
+      let more = body.querySelector('#AcMoreColors');
+      if (rows.length) {
+        if (!more) { more = document.createElement('div'); more.id = 'AcMoreColors'; body.appendChild(more); }
+        more.innerHTML = `<p style="font-weight:700;font-size:.88rem;margin:.6rem 0 .4rem">Combinar com outra cor</p>` + rows.map(r =>
+          `<button type="button" data-addcolor="${r.id}" style="display:flex;width:100%;align-items:center;justify-content:space-between;gap:.6rem;background:#fff;border:1px solid var(--ac-border);border-radius:10px;padding:.5rem .7rem;margin-bottom:.4rem;cursor:pointer;font-size:.85rem"><span>+ ${r.title}</span><span>Adicionar</span></button>`
+        ).join('');
+        more.querySelectorAll('[data-addcolor]').forEach(b => b.onclick = async () => {
+          try {
+            await fetch('/cart/add.js', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ items: [{ id: +b.dataset.addcolor, quantity: 1 }] }) });
+            updateDrawer(await fetch('/cart.js').then(r => r.json()));
+          } catch (err) {}
+        });
+      } else if (more) more.remove();
+    } catch (err) {}
     // Barra frete grátis R$149
     const bar = $('#AcFreeBar'), msg = $('#AcFreeMsg');
     if (bar && msg) {

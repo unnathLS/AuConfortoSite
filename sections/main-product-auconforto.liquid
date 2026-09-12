@@ -39,16 +39,24 @@
     {% render 'price-auconforto', product: product %}
     <div class="ac-trustline">💳 Pix + cartão 3x &nbsp;·&nbsp; 🚚 8–15 dias úteis com rastreio &nbsp;·&nbsp; 🛡️ 7 dias troca com vídeo</div>
 
-    <p style="font-weight:700;font-size:.9rem;margin:1rem 0 .4rem">Escolhe a cor e a quantidade — pode misturar</p>
-    {% for v in product.variants %}
-      <form action="/cart/add" method="post" style="display:flex;align-items:center;gap:.7rem;background:#fff;border:1px solid var(--ac-border);border-radius:12px;padding:.6rem .8rem;margin-bottom:.5rem">
-        <input type="hidden" name="id" value="{{ v.id }}">
-        <div style="flex:1;min-width:0"><strong style="font-size:.92rem">{{ v.title }}</strong><br><span style="font-size:.9rem">{{ v.price | money }}</span>{% unless v.available %} <small style="color:#a00">· esgotado</small>{% endunless %}</div>
-        <div class="ac-qty"><button type="button" data-qty-minus aria-label="Diminuir">−</button><input type="number" name="quantity" value="1" min="1" max="99" aria-label="Quantidade"><button type="button" data-qty-plus aria-label="Aumentar">+</button></div>
-        <button type="submit" class="ac-btn ac-btn--primary" style="min-height:50px;padding:0 1.1rem" {% unless v.available %}disabled{% endunless %}>Pôr no carrinho</button>
-      </form>
-    {% endfor %}
-    <p style="font-size:.85rem;color:var(--ac-muted)">No carrinho dá pra ajustar a quantidade e trocar a cor de cada item.</p>
+    {% form 'product', product, id: 'AcAddForm' %}
+      {% if product.variants.size == 1 %}<input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">{% endif %}
+      {% if product.variants.size > 1 %}
+        <label for="AcVariant" style="font-weight:700;font-size:.9rem">Cor / modelo</label>
+        <select id="AcVariant" name="id" style="width:100%;min-height:48px;border-radius:10px;border:1px solid var(--ac-border);padding:0 1rem;margin:.4rem 0 1rem">
+          {% for v in product.variants %}
+            <option value="{{ v.id }}" {% if v == product.selected_or_first_available_variant %}selected{% endif %}>{{ v.title }} — {{ v.price | money }}</option>
+          {% endfor %}
+        </select>
+      {% endif %}
+      <div class="ac-buy">
+        <div class="ac-qty"><button type="button" data-qty-minus>−</button><input type="number" name="quantity" value="1" min="1"><button type="button" data-qty-plus>+</button></div>
+        <button type="submit" class="ac-btn ac-btn--primary" style="flex:1" {% unless product.available %}disabled{% endunless %}>
+          {% if product.available %}Adicionar ao carrinho{% else %}Esgotado{% endif %}
+        </button>
+      </div>
+      {{ form | payment_button }}
+    {% endform %}
 
     <div class="ac-product__desc">{{ product.description }}</div>
 
